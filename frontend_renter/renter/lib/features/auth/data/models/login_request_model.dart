@@ -1,13 +1,18 @@
-class LoginRequestModel {
-  final String email;
-  final String password;
+class LoginRequestModel
+{
+    final String phone;
+    final String password;
 
-  LoginRequestModel({required this.email, required this.password});
+    LoginRequestModel({
+        required this.phone,
+        required this.password
+    });
 
-  Map<String, dynamic> toJson() {
-    return {
-      'email': email,
-      'password': password,
-    };
-  }
+    Map<String, dynamic> toJson()
+    {
+        return {
+            'phone': phone,
+            'password': password
+        };
+    }
 }

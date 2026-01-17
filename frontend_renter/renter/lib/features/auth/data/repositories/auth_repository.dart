@@ -1,6 +1,8 @@
+import 'package:renter/features/auth/data/models/login_request_model.dart';
+
 import '../datasources/auth_remote_datasource.dart';
 import '../models/register_request_model.dart';
-import '../models/login_request_model.dart';
+
 
 class AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -18,12 +20,18 @@ class AuthRepository {
   }
 
 //2. Login
-  Future<String?> login(LoginRequestModel request) async {
-    try {
-      await remoteDataSource.login(request);
-      return null; // Thành công (không có lỗi)
-    } catch (e) {
-      return e.toString().replaceAll("Exception: ", ""); // Trả về lỗi
+    Future<String?> login(LoginRequestModel request)
+    async
+    {
+        try
+        {
+            await remoteDataSource.login(request);
+            return null;
+        }
+        catch (e)
+        {
+            return e.toString();
+        }
     }
-  }
+
 }

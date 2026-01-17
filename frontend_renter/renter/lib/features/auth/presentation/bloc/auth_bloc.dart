@@ -1,5 +1,8 @@
-import '../../data/models/login_request_model.dart';
+
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:renter/features/auth/data/models/login_request_model.dart';
 import '../../data/models/register_request_model.dart';
 import '../../data/repositories/auth_repository.dart';
 import 'auth_event.dart';
@@ -11,7 +14,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required this.authRepository}) : super(AuthInitial()) {
     // Xử lý sự kiện Đăng ký
     on<RegisterSubmitted>(_onRegisterSubmitted);
+    //Xử lý sự kiện đăng nhập
     on<LoginSubmitted>(_onLoginSubmitted);
+
   }
 
   // Tách hàm xử lý ra cho gọn
@@ -47,24 +52,32 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
 //2. Login
-  Future<void> _onLoginSubmitted(
-    LoginSubmitted event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(AuthLoading());
-    try {
-      final error = await authRepository.login(LoginRequestModel(
-        email: event.email,
-        password: event.password,
-      ));
+    Future<void> _onLoginSubmitted(LoginSubmitted event, Emitter<AuthState> emit)
+    async
+    {
+        emit(AuthLoading());
+        
+        try
+        {
+            final requestModel = LoginRequestModel(
+                phone: event.phone,
+                password: event.password
+            );
 
-      if (error == null) {
-        emit(AuthSuccess());
-      } else {
-        emit(AuthFailure(error));
-      }
-    } catch (e) {
-      emit(AuthFailure("Lỗi không xác định: $e"));
+            final error = await authRepository.login(requestModel);
+
+            if (error==null)
+            {
+                emit(AuthSuccess());
+            }
+            else
+            {
+                emit(AuthFailure(error));
+            }
+        }
+        catch (e)
+        {
+            emit(AuthFailure("Đã xảy ra lỗi. Lỗi $e"));
+        }
     }
-  }
 }

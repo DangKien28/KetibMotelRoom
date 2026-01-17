@@ -18,7 +18,7 @@ class RegisterSubmitted extends AuthEvent {
 
 //2. Login
 class LoginSubmitted extends AuthEvent {
-  final String email;
+  final String phone;
   final String password;
-  LoginSubmitted({required this.email, required this.password});
+  LoginSubmitted({required this.phone, required this.password});
 }

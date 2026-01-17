@@ -24,12 +24,12 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _phoneController.dispose();
     _passController.dispose();
     super.dispose();
   }
@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       // Gửi sự kiện LoginSubmitted vào Bloc
       context.read<AuthBloc>().add(LoginSubmitted(
-            email: _emailController.text,
+            phone: _phoneController.text,
             password: _passController.text,
           ));
     }
@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 
                 // Logo Area
                 Container(
-                  width: 128, height: 128,
+                  width: 150, height: 200,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(24),
@@ -111,9 +111,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.eco, size: 40, color: Colors.green[400]),
+                        Image.asset(
+                            'assets/images/logo_TK.png',
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.contain,
+                        ),
                         const SizedBox(height: 8),
-                        Text("Ap Naturel", style: TextStyle(fontSize: 12, color: Colors.grey[800], fontWeight: FontWeight.w500)),
+                        Text("Ketib Motel Room", style: TextStyle(fontSize: 16, color: AppColors.tagText, fontWeight: FontWeight.w500)),
+                        Text("🏡Dream Motel🏡", style: TextStyle(fontSize: 12, color: AppColors.tagText, fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ),
@@ -122,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Text("Chào mừng trở lại!", textAlign: TextAlign.center, style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: AppColors.textMain)),
                 const SizedBox(height: 8),
                 const Text("Tìm phòng trọ ưng ý ngay hôm nay", textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: AppColors.textLight, fontWeight: FontWeight.w500)),
-                const SizedBox(height: 32),
+                const SizedBox(height: 30),
 
                 // Form Login
                 Form(
@@ -130,12 +136,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       KetibTextField(
-                        label: "Email hoặc SĐT",
-                        hintText: "Nhập email hoặc số điện thoại",
-                        controller: _emailController,
+                        label: "Số Điện Thoại",
+                        hintText: "Nhập số điện thoại",
+                        controller: _phoneController,
                         icon: Icons.mail_outline,
                         isIconLeft: true,
-                        validator: (val) => val!.isEmpty ? "Vui lòng nhập email" : null,
+                        validator: (val) => val!.isEmpty ? "Vui lòng nhập số điện thoại" : null,
                       ),
                       const SizedBox(height: 20),
                       KetibTextField(
