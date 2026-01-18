@@ -1,6 +1,3 @@
-
-import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:renter/features/auth/data/models/login_request_model.dart';
 import '../../data/models/register_request_model.dart';
@@ -18,8 +15,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginSubmitted>(_onLoginSubmitted);
 
   }
-
-  // Tách hàm xử lý ra cho gọn
 
 //1. Register
   Future<void> _onRegisterSubmitted(
