@@ -12,7 +12,7 @@ import 'features/auth/data/repositories/auth_repository.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 
 // 3. Import Screens
-import 'features/auth/presentation/screens/login_screen.dart';
+import 'features/auth/presentation/screens/welcome_screen.dart';
 
 void main() {
   // Đảm bảo Flutter Binding được khởi tạo trước khi chạy app
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme, 
 
           // E. MÀN HÌNH KHỞI ĐỘNG: LOGIN SCREEN
-          home: const LoginScreen(),
+          home: const WelcomeScreen(),
         ),
       ),
     );
