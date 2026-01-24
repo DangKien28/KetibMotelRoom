@@ -23,4 +23,4 @@ plugins {
 }
 
 include(":app")
-rootProject.name = "android_renter"
+rootProject.name = "android_landlord"
