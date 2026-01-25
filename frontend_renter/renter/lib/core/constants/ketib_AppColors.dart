@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
+class KetibAppcolors {
   // Lấy từ HTML: "primary": "#2b6cee"
   static const Color primary = Color(0xFF2B6CEE); 
   static const Color primaryDark = Color(0xFF1A4FB8); // hover state

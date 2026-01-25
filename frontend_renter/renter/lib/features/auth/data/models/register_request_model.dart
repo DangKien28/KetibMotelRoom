@@ -1,27 +1,25 @@
 class RegisterRequestModel {
-  final String name;
-  final String phone;
+  final String fullName;
   final String email;
+  final String phoneNumber;
   final String password;
-  final String? taxCode;
-  // backend có thể không cần confirmPassword, frontend tự check
+  final String role;
 
   RegisterRequestModel({
-    required this.name,
-    required this.phone,
+    required this.fullName,
     required this.email,
+    required this.phoneNumber,
     required this.password,
-    this.taxCode,
+    this.role = 'renter', // Mặc định người thuê
   });
 
   Map<String, dynamic> toJson() {
     return {
-      'full_name': name,
+      'full_name': fullName,
       'email': email,
-      'phone_number': phone,
+      'phone_number': phoneNumber,
       'password': password,
-      'role': 'renter', // Mặc định là người thuê
-      'tax_code': taxCode ?? '', // Gửi chuỗi rỗng nếu không có
+      'role': role,
     };
   }
 }

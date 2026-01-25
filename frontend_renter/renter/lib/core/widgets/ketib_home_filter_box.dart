@@ -12,7 +12,7 @@ class KetibHomeFilterBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: KetibAppcolors.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -49,7 +49,7 @@ class KetibHomeFilterBox extends StatelessWidget {
         style: const TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.bold,
-          color: AppColors.textLight,
+          color: KetibAppcolors.textLight,
         ),
       ),
     );
@@ -59,23 +59,23 @@ class KetibHomeFilterBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: KetibAppcolors.background,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.primary, size: 20),
+          Icon(icon, color: KetibAppcolors.primary, size: 20),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
               value,
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
-                color: AppColors.textMain,
+                color: KetibAppcolors.textMain,
               ),
             ),
           ),
-          const Icon(Icons.keyboard_arrow_down, color: AppColors.textLight),
+          const Icon(Icons.keyboard_arrow_down, color: KetibAppcolors.textLight),
         ],
       ),
     );

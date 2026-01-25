@@ -1,8 +1,11 @@
 class Validators {
-  // Regex cho Email
+  // Regex cho Email chuẩn
   static final RegExp _emailRegExp = RegExp(
     r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+',
   );
+
+  // Regex cho Số điện thoại Việt Nam (10 số, đầu 0 hoặc 84)
+  static final RegExp _phoneRegExp = RegExp(r'(84|0[3|5|7|8|9])+([0-9]{8})\b');
 
   // 1. Kiểm tra trường bắt buộc (không được để trống)
   static String? validateRequired(String? value, String fieldName) {
@@ -23,7 +26,18 @@ class Validators {
     return null;
   }
 
-  // 3. Kiểm tra Mật khẩu (Ví dụ: tối thiểu 6 ký tự)
+  // 3. Kiểm tra Số điện thoại (MỚI BỔ SUNG)
+  static String? validatePhone(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Vui lòng nhập số điện thoại';
+    }
+    if (!_phoneRegExp.hasMatch(value)) {
+      return 'Số điện thoại không hợp lệ (VD: 098...)';
+    }
+    return null;
+  }
+
+  // 4. Kiểm tra Mật khẩu (Tối thiểu 6 ký tự)
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Vui lòng nhập mật khẩu';
@@ -34,7 +48,7 @@ class Validators {
     return null;
   }
 
-  // 4. Kiểm tra xác nhận mật khẩu
+  // 5. Kiểm tra xác nhận mật khẩu
   static String? validateConfirmPassword(String? value, String originalPassword) {
     if (value != originalPassword) {
       return 'Mật khẩu xác nhận không khớp';

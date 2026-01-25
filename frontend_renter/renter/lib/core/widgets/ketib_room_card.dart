@@ -32,7 +32,7 @@ class KetibRoomCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: KetibAppcolors.surface,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -74,7 +74,7 @@ class KetibRoomCard extends StatelessWidget {
                     ),
                     child: Icon(
                       isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite ? AppColors.error : AppColors.textLight,
+                      color: isFavorite ? KetibAppcolors.error : KetibAppcolors.textLight,
                       size: 20,
                     ),
                   ),
@@ -86,7 +86,7 @@ class KetibRoomCard extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: AppColors.primary,
+                      color: KetibAppcolors.primary,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
@@ -112,7 +112,7 @@ class KetibRoomCard extends StatelessWidget {
                     child: const Text(
                       'MỚI ĐĂNG',
                       style: TextStyle(
-                        color: AppColors.primary,
+                        color: KetibAppcolors.primary,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
@@ -133,7 +133,7 @@ class KetibRoomCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.textMain,
+                      color:  KetibAppcolors.textMain,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -141,12 +141,12 @@ class KetibRoomCard extends StatelessWidget {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(Icons.location_on, size: 16, color: AppColors.textLight),
+                      const Icon(Icons.location_on, size: 16, color: KetibAppcolors.textLight),
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
                           address,
-                          style: const TextStyle(fontSize: 13, color: AppColors.textLight),
+                          style: const TextStyle(fontSize: 13, color: KetibAppcolors.textLight),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -173,7 +173,7 @@ class KetibRoomCard extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.textMain,
+                              color: KetibAppcolors.textMain,
                             ),
                           ),
                         ],
@@ -182,7 +182,7 @@ class KetibRoomCard extends StatelessWidget {
                       if (timeAgo != null)
                         Text(
                           timeAgo!,
-                          style: const TextStyle(fontSize: 12, color: AppColors.textLight),
+                          style: const TextStyle(fontSize: 12, color: KetibAppcolors.textLight),
                         ),
                     ],
                   )

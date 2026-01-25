@@ -35,7 +35,7 @@ class KetibTextField extends StatelessWidget {
           child: Text(
             label,
             style: const TextStyle(
-              color: AppColors.textMain,
+              color: KetibAppcolors.textMain,
               fontWeight: FontWeight.w600,
               fontSize: 14,
             ),
@@ -50,7 +50,7 @@ class KetibTextField extends StatelessWidget {
               keyboardType: keyboardType,
               validator: validator,
               style: const TextStyle(
-                  color: AppColors.textMain, fontWeight: FontWeight.w500),
+                  color: KetibAppcolors.textMain, fontWeight: FontWeight.w500),
               decoration: InputDecoration(
                 hintText: hintText,
                 contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),

@@ -23,7 +23,7 @@ class KetibButton extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.3), // shadow-primary/30
+            color: KetibAppcolors.primary.withOpacity(0.3), // shadow-primary/30
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -33,7 +33,7 @@ class KetibButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: KetibAppcolors.primary,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),

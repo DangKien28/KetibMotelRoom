@@ -7,9 +7,9 @@ import 'config/theme/app_theme.dart';
 import 'core/constants/ketib_api_constant.dart';
 
 // 2. Import Feature Auth (Data & Logic)
-import 'features/auth/data/datasources/auth_remote_datasource.dart';
-import 'features/auth/data/repositories/auth_repository.dart';
-import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/auth/data/datasources/register_remote_datasource.dart';
+import 'features/auth/data/repositories/register_repository_impl.dart';
+import 'features/auth/presentation/bloc/register_bloc.dart';
 
 // 3. Import Screens
 import 'features/auth/presentation/screens/welcome_screen.dart';

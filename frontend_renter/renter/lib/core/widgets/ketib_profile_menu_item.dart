@@ -25,7 +25,7 @@ class KetibProfileMenuItem extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDestructive ? const Color(0xFFFEF2F2) : AppColors.surface, // Màu nền đỏ nhạt nếu là nút xóa
+          color: isDestructive ? const Color(0xFFFEF2F2) : KetibAppcolors.surface, // Màu nền đỏ nhạt nếu là nút xóa
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
@@ -33,12 +33,12 @@ class KetibProfileMenuItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: isDestructive ? Colors.white : AppColors.primary.withOpacity(0.1),
+                color: isDestructive ? Colors.white : KetibAppcolors.primary.withOpacity(0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 icon,
-                color: isDestructive ? AppColors.error : AppColors.primary,
+                color: isDestructive ? KetibAppcolors.error : KetibAppcolors.primary,
                 size: 24,
               ),
             ),
@@ -52,7 +52,7 @@ class KetibProfileMenuItem extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: isDestructive ? AppColors.error : AppColors.textMain,
+                      color: isDestructive ? KetibAppcolors.error : KetibAppcolors.textMain,
                     ),
                   ),
                   if (subtitle != null) ...[
@@ -61,7 +61,7 @@ class KetibProfileMenuItem extends StatelessWidget {
                       subtitle!,
                       style: const TextStyle(
                         fontSize: 12,
-                        color: AppColors.textLight,
+                        color: KetibAppcolors.textLight,
                       ),
                     ),
                   ]
@@ -70,7 +70,7 @@ class KetibProfileMenuItem extends StatelessWidget {
             ),
             Icon(
               Icons.chevron_right,
-              color: isDestructive ? AppColors.error.withOpacity(0.5) : AppColors.textLight,
+              color: isDestructive ? KetibAppcolors.error.withOpacity(0.5) : KetibAppcolors.textLight,
             ),
           ],
         ),

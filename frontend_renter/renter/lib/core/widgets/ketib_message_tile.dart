@@ -31,7 +31,7 @@ class KetibMessageTile extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: KetibAppcolors.surface,
           borderRadius: BorderRadius.circular(16),
           // border: isUnread ? Border.all(color: AppColors.primary.withOpacity(0.2)) : null,
         ),
@@ -53,7 +53,7 @@ class KetibMessageTile extends StatelessWidget {
                         width: 14,
                         height: 14,
                         decoration: BoxDecoration(
-                          color: AppColors.success,
+                          color: KetibAppcolors.success,
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 2),
                         ),
@@ -66,10 +66,10 @@ class KetibMessageTile extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: (iconColor ?? AppColors.primary).withOpacity(0.1),
+                  color: (iconColor ?? KetibAppcolors.primary).withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(icon, color: iconColor ?? AppColors.primary, size: 28),
+                child: Icon(icon, color: iconColor ?? KetibAppcolors.primary, size: 28),
               ),
             
             const SizedBox(width: 16),
@@ -87,14 +87,14 @@ class KetibMessageTile extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: isUnread ? FontWeight.bold : FontWeight.w600,
-                          color: AppColors.textMain,
+                          color: KetibAppcolors.textMain,
                         ),
                       ),
                       Text(
                         time,
                         style: TextStyle(
                           fontSize: 12,
-                          color: isUnread ? AppColors.primary : AppColors.textLight,
+                          color: isUnread ?  KetibAppcolors.primary : KetibAppcolors.textLight,
                           fontWeight: isUnread ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
@@ -110,7 +110,7 @@ class KetibMessageTile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 14,
-                            color: isUnread ? AppColors.textMain : AppColors.textLight,
+                            color: isUnread ? KetibAppcolors.textMain : KetibAppcolors.textLight,
                           ),
                         ),
                       ),
@@ -120,7 +120,7 @@ class KetibMessageTile extends StatelessWidget {
                           width: 10,
                           height: 10,
                           decoration: const BoxDecoration(
-                            color: AppColors.primary,
+                            color: KetibAppcolors.primary,
                             shape: BoxShape.circle,
                           ),
                         ),

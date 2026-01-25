@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-// Import các file Ketib vừa tạo
 import '../../../../core/constants/ketib_AppColors.dart';
-import '../../../../core/widgets/ketib_text_field.dart';
 import '../../../../core/widgets/ketib_button.dart';
-
-// Import Bloc
-import '../bloc/auth_bloc.dart';
-import '../bloc/auth_event.dart';
-import '../bloc/auth_state.dart';
+import '../../../../core/widgets/ketib_text_field.dart';
+import '../../../../core/utils/validators.dart';
+import '../bloc/register_bloc.dart';
+import '../bloc/register_event.dart';
+import '../bloc/register_state.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -20,250 +17,187 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
-
-  // Controllers
-  final _nameController = TextEditingController();
-  final _phoneController = TextEditingController();
+  
+  // Khởi tạo Controllers để quản lý text nhập vào
+  final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _passController = TextEditingController();
-  final _confirmPassController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
+  // Giải phóng bộ nhớ khi thoát màn hình
   @override
   void dispose() {
-    _nameController.dispose();
-    _phoneController.dispose();
+    _fullNameController.dispose();
     _emailController.dispose();
-    _passController.dispose();
-    _confirmPassController.dispose();
+    _phoneController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
-  void _onRegisterPressed() {
+  void _onRegister() {
+    // Chỉ gọi Bloc khi Form hợp lệ (không có lỗi đỏ)
     if (_formKey.currentState!.validate()) {
-      context.read<AuthBloc>().add(RegisterSubmitted(
-            name: _nameController.text,
-            phone: _phoneController.text,
-            email: _emailController.text,
-            password: _passController.text,
-          ));
+      context.read<RegisterBloc>().add(
+            RegisterSubmitted(
+              fullName: _fullNameController.text.trim(),
+              email: _emailController.text.trim(),
+              phoneNumber: _phoneController.text.trim(),
+              password: _passwordController.text,
+            ),
+          );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      
-      // TopAppBar
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, size: 24),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text("Đăng ký"),
+        title: const Text(
+          "Đăng Ký",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
-      
-      body: BlocListener<AuthBloc, AuthState>(
+      // BlocConsumer giúp vừa lắng nghe state để show thông báo, vừa vẽ lại UI
+      body: BlocConsumer<RegisterBloc, RegisterState>(
         listener: (context, state) {
-          if (state is AuthSuccess) {
+          if (state is RegisterFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Đăng ký thành công!")));
-            Navigator.pop(context);
-          } else if (state is AuthFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(state.message), backgroundColor: Colors.red));
+              SnackBar(content: Text(state.error), backgroundColor: Colors.red),
+            );
+          } else if (state is RegisterSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message), backgroundColor: Colors.green),
+            );
+            Navigator.pop(context); // Quay lại màn hình trước đó (Welcome/Login)
           }
         },
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(24, 10, 24, 30), // px-6 pb-12 pt-2
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // 1. Tag "NGƯỜI THUÊ"
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6), // px-3 py-1
-                  decoration: BoxDecoration(
-                    color: AppColors.tagBackground, // bg-blue-100
-                    borderRadius: BorderRadius.circular(999), // rounded-full
-                    border: Border.all(color: Colors.blue.shade200), // border-blue-200
-                  ),
-                  child: const Text(
-                    "NGƯỜI THUÊ",
-                    style: TextStyle(
-                      color: AppColors.tagText, // text-primary
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12, // text-xs
-                      letterSpacing: 0.5,
+        builder: (context, state) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/images/logo_TK.png', // Đảm bảo bạn đã có ảnh này
+                      height: 100,
+                      fit: BoxFit.contain,
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
+                  const SizedBox(height: 30),
 
-                // 2. Headline & Subtitle
-                const Text(
-                  "Tạo tài khoản mới",
-                  style: TextStyle(
-                    fontSize: 30, // text-3xl
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textMain,
-                    height: 1.2,
+                  // 1. Họ và tên
+                  KetibTextField(
+                    label: "Họ và tên",
+                    hintText: "Nhập họ và tên",
+                    controller: _fullNameController,
+                    icon: Icons.person_outline,
+                    isIconLeft: true, // Icon nằm bên trái
+                    validator: (val) => Validators.validateRequired(val, 'Họ và tên'),
                   ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  "Đăng ký ngay để tìm phòng trọ ưng ý và quản lý hợp đồng dễ dàng.",
-                  style: TextStyle(
-                    fontSize: 16, // text-base
-                    color: AppColors.textLight,
-                    height: 1.5,
+                  const SizedBox(height: 16),
+
+                  // 2. Email
+                  KetibTextField(
+                    label: "Email",
+                    hintText: "Nhập địa chỉ email",
+                    controller: _emailController,
+                    icon: Icons.email_outlined,
+                    isIconLeft: true,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: Validators.validateEmail, // Sử dụng validator từ Core
                   ),
-                ),
-                const SizedBox(height: 32), // mb-8
+                  const SizedBox(height: 16),
 
-                // --- FORM FIELDS (space-y-5 -> khoảng cách 20px) ---
+                  // 3. Số điện thoại
+                  KetibTextField(
+                    label: "Số điện thoại",
+                    hintText: "Nhập số điện thoại",
+                    controller: _phoneController,
+                    icon: Icons.phone_android_outlined,
+                    isIconLeft: true,
+                    keyboardType: TextInputType.phone,
+                    validator: Validators.validatePhone, // Sử dụng validator mới thêm
+                  ),
+                  const SizedBox(height: 16),
 
-                // Họ và tên (Icon Person bên phải)
-                KetibTextField(
-                  label: "Họ và tên",
-                  hintText: "Nhập họ tên của bạn",
-                  controller: _nameController,
-                  icon: Icons.person_outline, // material-symbols: person
-                  validator: (val) => val!.isEmpty ? "Vui lòng nhập họ tên" : null,
-                ),
-                const SizedBox(height: 20),
+                  // 4. Mật khẩu
+                  KetibTextField(
+                    label: "Mật khẩu",
+                    hintText: "Nhập mật khẩu",
+                    controller: _passwordController,
+                    icon: Icons.lock_outline,
+                    isIconLeft: true,
+                    isPassword: true, // Tự động hiện nút mắt ẩn/hiện
+                    validator: Validators.validatePassword,
+                  ),
+                  const SizedBox(height: 16),
 
-                // Số điện thoại (Icon Phone bên phải)
-                KetibTextField(
-                  label: "Số điện thoại",
-                  hintText: "0901234567",
-                  controller: _phoneController,
-                  keyboardType: TextInputType.phone,
-                  icon: Icons.phone_outlined, // material-symbols: phone
-                  validator: (val) => val!.length < 9 ? "SĐT không hợp lệ" : null,
-                ),
-                const SizedBox(height: 20),
+                  // 5. Xác nhận mật khẩu
+                  KetibTextField(
+                    label: "Nhập lại mật khẩu",
+                    hintText: "Nhập lại mật khẩu",
+                    controller: _confirmPasswordController,
+                    icon: Icons.lock_outline,
+                    isIconLeft: true,
+                    isPassword: true,
+                    validator: (val) => Validators.validateConfirmPassword(
+                      val, 
+                      _passwordController.text, // So sánh với mật khẩu gốc
+                    ),
+                  ),
+                  const SizedBox(height: 30),
 
-                // Email (Icon Mail bên phải)
-                KetibTextField(
-                  label: "Email",
-                  hintText: "example@gmail.com",
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.mail_outline, // material-symbols: mail
-                  validator: (val) => !val!.contains("@") ? "Email không hợp lệ" : null,
-                ),
-                const SizedBox(height: 20),
+                  // Nút Đăng ký (Hiển thị Loading khi đang gọi API)
+                  state is RegisterLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: KetibButton(
+                            text: "Đăng Ký",
+                            onPressed: _onRegister,
+                          ),
+                        ),
 
-                // Mật khẩu (Nút Visibility bên phải)
-                KetibTextField(
-                  label: "Mật khẩu",
-                  hintText: "••••••••",
-                  controller: _passController,
-                  isPassword: true,
-                  validator: (val) => val!.length < 6 ? "Mật khẩu quá ngắn" : null,
-                ),
-                const SizedBox(height: 20),
-
-                // Xác nhận mật khẩu
-                KetibTextField(
-                  label: "Xác nhận mật khẩu",
-                  hintText: "••••••••",
-                  controller: _confirmPassController,
-                  isPassword: true,
-                  validator: (val) => val != _passController.text ? "Mật khẩu không khớp" : null,
-                ),
-                const SizedBox(height: 32), // pt-6
-
-                // 3. Primary Action Button
-                BlocBuilder<AuthBloc, AuthState>(
-                  builder: (context, state) {
-                    return KetibButton(
-                      text: "Đăng ký",
-                      isLoading: state is AuthLoading,
-                      onPressed: _onRegisterPressed,
-                    );
-                  },
-                ),
-                
-                // 4. Social Login Divider
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: Row(
+                  const SizedBox(height: 20),
+                  
+                  // Dẫn hướng sang màn hình đăng nhập
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Expanded(child: Divider(color: AppColors.inputBorder)),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          "HOẶC ĐĂNG KÝ VỚI",
+                      const Text("Đã có tài khoản? ", style: TextStyle(color: Colors.grey)),
+                      GestureDetector(
+                        onTap: () {
+                          // Điều hướng sẽ được xử lý sau khi làm xong màn Login
+                          Navigator.pop(context); 
+                        },
+                        child: const Text(
+                          "Đăng nhập ngay",
                           style: TextStyle(
-                            color: Colors.grey[400], // text-gray-400
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5,
+                            color: KetibAppcolors.primary,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      const Expanded(child: Divider(color: AppColors.inputBorder)),
                     ],
                   ),
-                ),
-
-                // 5. Social Buttons (Grid 2 cột)
-                Row(
-                  children: [
-                    Expanded(child: _buildSocialButton(Icons.g_mobiledata, const Color(0xFFEA4335))), // Google Red
-                    const SizedBox(width: 16),
-                    Expanded(child: _buildSocialButton(Icons.facebook, const Color(0xFF1877F2))),    // FB Blue
-                  ],
-                ),
-                const SizedBox(height: 32),
-
-                // 6. Footer Link
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Bạn đã có tài khoản? ",
-                      style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w500),
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const Text(
-                        "Đăng nhập",
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24), // Bottom safe area
-              ],
+                ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Widget con cho Social Button (Style theo HTML: h-14 rounded-2xl border)
-  Widget _buildSocialButton(IconData icon, Color color) {
-    return Container(
-      height: 56,
-      decoration: BoxDecoration(
-        color: AppColors.inputBackground,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.inputBorder),
-      ),
-      child: InkWell(
-        onTap: () {},
-        borderRadius: BorderRadius.circular(16),
-        child: Center(
-          child: Icon(icon, size: 32, color: color), // Icon to hơn chút cho đẹp
-        ),
+          );
+        },
       ),
     );
   }
