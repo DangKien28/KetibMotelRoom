@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thông báo - Thuê phòng trọ</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "primary-dark": "#1a4fb0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display selection:bg-primary/30">
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-4 py-3 transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<button class="p-2 -ml-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Thông báo</h1>
+</div>
+<button class="text-primary hover:text-primary-dark text-sm font-semibold px-2 py-1 rounded-lg hover:bg-primary/5 transition-colors">
+                Đọc tất cả
+            </button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-md mx-auto flex flex-col gap-6 p-4 pb-24 overflow-x-hidden">
+<section>
+<h3 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-1 mb-3">Mới nhất</h3>
+<div class="flex flex-col gap-3">
+<div class="relative group bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex gap-4 items-start active:scale-[0.99] transition-transform cursor-pointer">
+<div class="size-2.5 bg-primary rounded-full absolute top-5 right-4 ring-4 ring-primary/10"></div>
+<div class="size-12 rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined filled">chat</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1 pr-6">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Tin nhắn từ Cô Hạnh</h4>
+</div>
+<p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed font-medium">Cháu ơi, cuối tuần này thợ sẽ qua bảo dưỡng điều hòa nhé. Cháu sắp xếp ở nhà mở cửa giúp cô.</p>
+<span class="text-[10px] font-semibold text-primary mt-2 block">10 phút trước</span>
+</div>
+</div>
+<div class="relative group bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex gap-4 items-start active:scale-[0.99] transition-transform cursor-pointer">
+<div class="size-2.5 bg-primary rounded-full absolute top-5 right-4 ring-4 ring-primary/10"></div>
+<div class="size-12 rounded-full bg-green-50 dark:bg-green-900/20 text-green-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined filled">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1 pr-6">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Thanh toán thành công</h4>
+</div>
+<p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">Hóa đơn tiền điện tháng 9/2024 đã được thanh toán. Cảm ơn bạn!</p>
+<span class="text-[10px] font-semibold text-slate-400 mt-2 block">2 giờ trước</span>
+</div>
+</div>
+<div class="relative group bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex gap-4 items-start active:scale-[0.99] transition-transform cursor-pointer">
+<div class="size-12 rounded-full bg-orange-50 dark:bg-orange-900/20 text-orange-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined filled">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1 pr-2">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Hợp đồng sắp hết hạn</h4>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">Hợp đồng thuê phòng 302 sẽ hết hạn trong 30 ngày tới. Vui lòng liên hệ chủ nhà để gia hạn.</p>
+<span class="text-[10px] font-semibold text-slate-400 mt-2 block">5 giờ trước</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-1 mb-3">Trước đó</h3>
+<div class="flex flex-col gap-3">
+<div class="relative group bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex gap-4 items-start active:scale-[0.99] transition-transform cursor-pointer">
+<div class="size-12 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined filled">local_offer</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1 pr-2">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Ưu đãi mùa tựu trường</h4>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">Giảm ngay 20% phí dịch vụ tìm phòng cho sinh viên nhập học tháng 9. Nhập mã SV2024.</p>
+<span class="text-[10px] font-semibold text-slate-400 mt-2 block">1 ngày trước</span>
+</div>
+</div>
+<div class="relative w-full h-full overflow-hidden rounded-2xl group">
+<div class="absolute inset-y-0 right-0 w-full bg-red-500 flex items-center justify-end px-6 rounded-2xl">
+<div class="flex flex-col items-center gap-1 text-white animate-pulse">
+<span class="material-symbols-outlined">delete</span>
+<span class="text-[10px] font-bold">Xóa</span>
+</div>
+</div>
+<div class="relative bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex gap-4 items-start cursor-pointer transform -translate-x-20 shadow-[4px_0_12px_rgba(0,0,0,0.1)]">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined filled">system_update</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1 pr-2">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Cập nhật ứng dụng v2.1</h4>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">Phiên bản mới cải thiện hiệu năng và sửa lỗi hiển thị bản đồ.</p>
+<span class="text-[10px] font-semibold text-slate-400 mt-2 block">3 ngày trước</span>
+</div>
+</div>
+</div>
+<div class="relative group bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex gap-4 items-start active:scale-[0.99] transition-transform cursor-pointer">
+<div class="size-12 rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined filled">chat</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1 pr-2">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Tin nhắn từ Anh Tuấn</h4>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">Em xem phòng lúc 18h tối nay được không?</p>
+<span class="text-[10px] font-semibold text-slate-400 mt-2 block">4 ngày trước</span>
+</div>
+</div>
+</div>
+</section>
+<div class="hidden flex flex-col items-center justify-center py-12 opacity-50">
+<div class="size-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-4xl text-slate-300">notifications_off</span>
+</div>
+<p class="text-slate-500 font-medium text-sm">Chưa có thông báo nào</p>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pb-safe z-40">
+<div class="grid grid-cols-4 h-16 max-w-md mx-auto">
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-full h-full transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-full h-full transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Đã lưu</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-full h-full transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-medium">Tin nhắn</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-full h-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Cá nhân</span>
+</button>
+</div>
+</nav>
+<div class="h-20 w-full bg-transparent"></div>
+
+</body></html>

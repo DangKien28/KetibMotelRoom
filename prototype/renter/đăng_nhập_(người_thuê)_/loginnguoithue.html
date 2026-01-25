@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tenant Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#ffffff",
+                        "background-dark": "#101622",
+                        "surface-light": "#f8f9fc",
+                        "surface-dark": "#1a2230",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl shadow-slate-200/50 dark:shadow-none bg-background-light dark:bg-background-dark">
+<!-- Decorative Background Gradient -->
+<div class="absolute top-[-10%] left-[-20%] w-[80%] h-[40%] bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-20%] w-[80%] h-[40%] bg-primary/5 rounded-full blur-[80px] pointer-events-none"></div>
+<!-- Top Bar -->
+<div class="flex items-center p-4 z-10">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white pr-10">
+                Đăng nhập
+            </h2>
+</div>
+<!-- Content Scroll Area -->
+<div class="flex-1 flex flex-col px-6 pb-6 overflow-y-auto no-scrollbar z-10">
+<!-- Hero Section -->
+<div class="flex flex-col items-center pt-6 pb-8">
+<div class="w-32 h-32 mb-6 rounded-2xl overflow-hidden bg-surface-light dark:bg-surface-dark flex items-center justify-center relative">
+<img alt="App Logo" class="w-full h-full object-cover opacity-90" data-alt="Modern clean apartment interior living room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWauQkJUkjTRiqx-80m7VA9XUILesmpgPz2g-SR7t1nSsCs9FXQdheJ85iFb-eDfK_n-4WxGTRP0xfRksjdk4aQP0B279Vc93xevBe4Npw6bY4_F_BtjzEMW9VRo8YsBJniW9_ot9UqMsKhM_v96EUYtqMeNxYX6aa2Dfx21xCTc-dAq_mZ_diYHr4ITTbc_wFXlh1r4KdG4ovbla5gF6xLHwVc-Yp3NJEW29PmEBNWH_c3ww6U2DC6CqZeG4VcvPJsdDC3p43aY"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+</div>
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white text-center mb-2">
+                    Chào mừng trở lại!
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-center font-medium">
+                    Tìm phòng trọ ưng ý ngay hôm nay
+                </p>
+</div>
+<!-- Form Section -->
+<form class="flex flex-col gap-5 w-full">
+<!-- Email/Phone Field -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Email hoặc SĐT</label>
+<div class="relative group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-surface-light dark:bg-surface-dark text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none font-medium" placeholder="Nhập email hoặc số điện thoại" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Mật khẩu</label>
+<div class="relative group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full h-14 pl-12 pr-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-surface-light dark:bg-surface-dark text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none font-medium" placeholder="Nhập mật khẩu" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<div class="flex justify-end mt-1">
+<a class="text-sm font-semibold text-primary hover:text-blue-600 transition-colors" href="#">
+                            Quên mật khẩu?
+                        </a>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="mt-4 w-full h-14 bg-primary hover:bg-blue-600 active:scale-[0.98] text-white text-lg font-bold rounded-xl shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2 group">
+<span>Đăng nhập</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative flex py-8 items-center">
+<div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
+<span class="flex-shrink-0 mx-4 text-slate-400 dark:text-slate-500 text-sm font-medium">Hoặc đăng nhập với</span>
+<div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<img alt="Google" class="w-5 h-5" data-alt="Google logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUIBgXZ5j7_kLB4fiWMZIF2ys5am9OLXwkN5CQss7wvQq4GjkMMxEiy-ZJz3bccx2aS56aLw8dNJTkV68m3a4Zhe9EXQndNUelylt-KzVgCFsXjcm2-msQplt1WdbrjNDDW7GA-ljZrM1C4p_KX3KDqTaj6GxmCGDwCrDHcyODA-KQ0L6R5ujuWOS9Xz88C8nHj-VKr5sSxj6wMIuz3nxeGo0jepXh9435qy1OZc0Vd34vq1u-SueXdVrI8Jv2F_qhvGaUzvAT-tM"/>
+<span class="font-semibold text-slate-700 dark:text-white text-sm">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<img alt="Facebook" class="w-5 h-5" data-alt="Facebook logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9tljj4T9a7GXS16ozfaMpiQkM38S8DlKuac0Ev2J9s2DLnnjNu99c21qn_Xcab-HJSfq4gSEYTwWiqLL1l9U4EKnBuAhjDACDcRuN4Rp9uV8OJhbRt8FCLh2CDRBDsMRkqtuq09M-77st28HIYimd5lVvVYcGIbHf9kWy3S-ImMrVVQvwOuB_B9pdkuGQp3JuKC46v_MecCi6vY6QuDN_aXW3c_kHpAk1ooW8jFpIdyUIxAN9GGJ3G-mp03dQFye6TOngUyZFpPY"/>
+<span class="font-semibold text-slate-700 dark:text-white text-sm">Facebook</span>
+</button>
+</div>
+<!-- Spacer to push footer down if screen is tall -->
+<div class="flex-grow min-h-[20px]"></div>
+<!-- Footer Link -->
+<div class="mt-auto pt-6 text-center">
+<p class="text-slate-600 dark:text-slate-400 text-base">
+                    Chưa có tài khoản? 
+                    <a class="text-primary font-bold hover:text-blue-600 transition-colors ml-1" href="#">Đăng ký ngay</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

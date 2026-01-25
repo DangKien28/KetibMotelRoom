@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý Người dùng</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b99ee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101a22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-100 font-display text-slate-900">
+<div class="relative mx-auto flex h-screen w-full max-w-[480px] flex-col bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
+<header class="flex items-center justify-between bg-white dark:bg-[#1a2632] p-4 shadow-sm z-10">
+<button class="flex size-10 items-center justify-center rounded-full text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white flex-1 text-center">Quản lý người dùng</h1>
+<button class="flex size-10 items-center justify-center rounded-full text-primary hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</header>
+<div class="px-4 py-3 bg-white dark:bg-[#1a2632] border-b border-gray-100 dark:border-gray-800">
+<div class="relative flex w-full items-center rounded-xl bg-gray-100 dark:bg-gray-800">
+<div class="flex h-12 w-12 items-center justify-center text-gray-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="h-12 w-full bg-transparent pr-4 text-base text-slate-900 dark:text-white placeholder:text-gray-400 focus:outline-none border-none ring-0 focus:ring-0" placeholder="Tìm theo tên hoặc email..." value=""/>
+</div>
+</div>
+<div class="flex gap-3 px-4 py-3 overflow-x-auto hide-scrollbar bg-white dark:bg-[#1a2632]">
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-primary px-4 text-sm font-medium text-white shadow-sm shadow-blue-200 dark:shadow-none">
+            Tất cả
+        </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 px-4 text-sm font-medium text-slate-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            Chủ trọ
+        </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 px-4 text-sm font-medium text-slate-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            Người thuê
+        </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 px-4 text-sm font-medium text-slate-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            Đã khóa
+        </button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-3 pb-24">
+<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1e2b36] p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<div class="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white dark:border-gray-600 shadow-sm">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="Portrait of a young man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFZWzMcQy3rBLKJtJplF4JbBydC9is3Uh1BLEQXTx6OMTFZZd17mpolM9rqNbedFQra2GHjVWl4qVQQOFxNpccZTltLcaHsgB_zPw6HcpZlMhJRV82uOcztt3HQoWh_OnzeAG2MsuhePCKe3aUEuQ8XfioJ9Apjt_O7HCYdh0lHDkWtCGlvsWuzNXHXE1Jr0bNCyX4S2b50naVF1TWUcgIP1tQ4lGgTn4blaqO0SCD2X7HOq660KdRHqNfUUs_p08KPd1uNxpiRH0"/>
+<div class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-gray-800"></div>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white line-clamp-1">Nguyễn Văn A</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mb-1">nguyenvana@gmail.com</p>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-md bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300 ring-1 ring-inset ring-blue-700/10">Chủ trọ</span>
+<span class="text-xs text-green-600 dark:text-green-400 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                Hoạt động
+                            </span>
+</div>
+</div>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1e2b36] p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<div class="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white dark:border-gray-600 shadow-sm">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="Portrait of a young woman smiling outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt7x1jBON_pRq4T_6nYixrFoVWlFqvGnxRepTmjOn1x1ZnVXxWBHMEm0fF9zkfd7x68IAwKTBpWBKPGwZhVyOlfpKCqwfpdc4JiEV3ZmwlzV9qu1EIg5NWtAO23SrUNfD86M8H3_G1a3qcZeBspMHvz0AtXji95VrYWdK5EAnFImCVNItZ8slFPe7oj0lUWUxp6FNfYp9tMMe0dqHykkwXU-jC-lTBTcKqAsducRZgE6kp_L9uf-j4-dV1cFuv7QhJFSoIn6ZQVZg"/>
+<div class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-gray-800"></div>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white line-clamp-1">Trần Thị B</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mb-1">tranthib@gmail.com</p>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700 px-2 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10">Người thuê</span>
+<span class="text-xs text-green-600 dark:text-green-400 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                Hoạt động
+                            </span>
+</div>
+</div>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1e2b36] p-4 shadow-sm border border-gray-100 dark:border-gray-700 opacity-80">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<div class="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white dark:border-gray-600 shadow-sm grayscale">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="Portrait of a man with short hair looking serious" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGnaVEm-pNVGU2t7XKnL7ZewjVGUzJDx8IpQwZZdYSz5G2BPb3HWIVjV_gfs0sP7n7ozPLyeYDrUe3bU1ftkEwRKSrJhmZIVpRJNwHD3Hml5yU0yIaLvAbUKCF5wEXjurC98_FW8Sa0XTcmyPwcnj7lIcgPmS8Ba0FEkSGAcCtB9Ein94PLXisgn5gA1VgukX0bbFi2lYoskBevrJgj0EQLwq6tTvZrEXUaDVGcHltoGSqAxPbVVzVpGc6xe5p7YgqRpCo3I0KWik"/>
+<div class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-800"></div>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-semibold text-slate-500 dark:text-gray-400 line-clamp-1">Lê Văn C</p>
+<p class="text-sm text-gray-400 dark:text-gray-500 line-clamp-1 mb-1">levanc@outlook.com</p>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700 px-2 py-0.5 text-xs font-medium text-gray-500 dark:text-gray-400 ring-1 ring-inset ring-gray-500/10">Người thuê</span>
+<span class="text-xs text-red-500 dark:text-red-400 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">block</span>
+                                Đã khóa
+                            </span>
+</div>
+</div>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1e2b36] p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<div class="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-white dark:border-gray-600 shadow-sm">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="Portrait of a young woman with curly hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPw7c3dQIZ5rjNnMDwHzqXE9JPHXtfd7Ki7PFyQ7qKbpP613ujF-7RZv5z9CMI4MvBCAO8Xi0L2ndON5QX6sLKOGtnrd8yrRmjhTHJDTmeVbmjDEV48rmx4sCVQXacfqgupivYX_KlfRP8kpsc7wYMAMMi57xGKgBVUm0xc0QNZsQn8chCRSSbPA9qSTu3Om79-ljNZM7csLeuXYwItZmeIFap6OAh0xpNQacT90sVi8Fa9Dp1BAcRPM0IyTp6_EsUijMjqCTHurw"/>
+<div class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-gray-800"></div>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white line-clamp-1">Phạm Thị D</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mb-1">phamthid@gmail.com</p>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-md bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300 ring-1 ring-inset ring-blue-700/10">Chủ trọ</span>
+<span class="text-xs text-green-600 dark:text-green-400 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                Hoạt động
+                            </span>
+</div>
+</div>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<nav class="absolute bottom-0 w-full bg-white dark:bg-[#1a2632] border-t border-gray-200 dark:border-gray-800 px-6 py-2 flex justify-between items-center z-20 pb-5">
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px]">dashboard</span>
+<span class="text-[10px] font-medium">Tổng quan</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px]">apartment</span>
+<span class="text-[10px] font-medium">Phòng trọ</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary">
+<span class="material-symbols-outlined text-[26px] fill-current">group</span>
+<span class="text-[10px] font-medium">Người dùng</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px]">settings</span>
+<span class="text-[10px] font-medium">Cài đặt</span>
+</button>
+</nav>
+</div>
+
+</body></html>

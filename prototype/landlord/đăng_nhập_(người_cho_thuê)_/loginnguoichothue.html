@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Landlord Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-100 dark:bg-gray-900 flex justify-center min-h-screen items-center p-0 sm:p-4 font-display">
+<!-- Mobile Container -->
+<div class="relative flex h-full min-h-[812px] w-full max-w-[400px] flex-col bg-background-light dark:bg-background-dark overflow-hidden rounded-none sm:rounded-[32px] shadow-2xl border-0 sm:border border-gray-200 dark:border-gray-800">
+<!-- Background Decoration (Optional for depth) -->
+<div class="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto no-scrollbar relative z-10 flex flex-col">
+<!-- Hero Image / Header -->
+<div class="p-6 pb-2 pt-12 flex flex-col items-center">
+<div class="w-full aspect-[4/3] rounded-2xl bg-center bg-cover bg-no-repeat shadow-lg mb-6 relative overflow-hidden group" data-alt="Modern apartment building exterior with clear blue sky representing rental property" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDivFJqka99Vq7ocXMnyIIFG9tT0_G6hDTddaQ8hKp8wJQOLxrwCh5ywhTVbWHG9u4kuxqXhmW8437jmt6KE-du6fy8YxRIc_zYuQtfv5_0rwwohEtn1vM33tNbpvP2hdpdkXcQ3zY4o5m-WLoXFKYxxK3_r46D5viX2GfdovHyE6z6Gh8Tir7Nzhn0Se_qMmVsoouuuBjj3vjL8Bxt7BVchm3We_vKAOPOQuqaXpLXNOWNOhT6S4YlloOfEZOroGohRlsGBqXPUC4");'>
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors duration-500"></div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight mb-2 tracking-tight">Chào mừng trở lại!</h1>
+<p class="text-gray-500 dark:text-gray-400 text-base font-medium leading-relaxed max-w-[280px]">
+                        Dành cho người cho thuê. <br/>Quản lý phòng trọ của bạn dễ dàng hơn.
+                    </p>
+</div>
+</div>
+<!-- Login Form -->
+<div class="px-6 py-4 flex flex-col gap-5">
+<!-- Email/Phone Input -->
+<div class="flex flex-col gap-2 group">
+<label class="text-gray-900 dark:text-white text-sm font-semibold ml-1">Email hoặc Số điện thoại</label>
+<div class="relative flex items-center">
+<div class="absolute left-4 text-gray-400 dark:text-gray-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="w-full h-12 pl-11 pr-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-sm font-medium" placeholder="nhadautu@example.com" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-2 group">
+<div class="flex justify-between items-center ml-1">
+<label class="text-gray-900 dark:text-white text-sm font-semibold">Mật khẩu</label>
+</div>
+<div class="relative flex items-center">
+<div class="absolute left-4 text-gray-400 dark:text-gray-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full h-12 pl-11 pr-12 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-sm font-medium" placeholder="••••••••" type="password"/>
+<button class="absolute right-0 h-full px-4 text-gray-400 hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end mt-1">
+<a class="text-primary hover:text-primary/80 text-sm font-semibold transition-colors" href="#">Quên mật khẩu?</a>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full bg-primary hover:bg-blue-600 active:scale-[0.98] transition-all duration-200 text-white h-12 rounded-xl font-bold text-base shadow-md shadow-primary/30 flex items-center justify-center gap-2 mt-2">
+<span>Đăng nhập</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Social Login Divider -->
+<div class="px-8 py-2">
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-gray-200 dark:border-gray-700"></div>
+<span class="flex-shrink-0 mx-4 text-gray-400 text-xs font-medium uppercase tracking-wider">Hoặc đăng nhập với</span>
+<div class="flex-grow border-t border-gray-200 dark:border-gray-700"></div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<button class="flex items-center justify-center gap-2 h-11 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<!-- Simulated Google Icon with Text -->
+<span class="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500">G</span>
+<span class="text-gray-700 dark:text-gray-200 text-sm font-semibold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-11 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<!-- Simulated Facebook Icon with Text -->
+<span class="font-bold text-xl text-blue-600">f</span>
+<span class="text-gray-700 dark:text-gray-200 text-sm font-semibold">Facebook</span>
+</button>
+</div>
+</div>
+<!-- Spacer to push footer down if content is short -->
+<div class="h-6"></div>
+</div>
+<!-- Footer -->
+<div class="p-6 bg-background-light dark:bg-background-dark border-t border-transparent z-10">
+<p class="text-center text-gray-500 dark:text-gray-400 text-sm">
+                Bạn chưa có tài khoản? 
+                <a class="text-primary font-bold hover:underline ml-1" href="#">Đăng ký ngay</a>
+</p>
+</div>
+</div>
+<!-- Script to simulate simple interactivity -->
+<script>
+        // Simple toggle for password visibility
+        const passwordInput = document.querySelector('input[type="password"]');
+        const toggleButton = document.querySelector('input[type="password"] + button');
+        const toggleIcon = toggleButton ? toggleButton.querySelector('span') : null;
+
+        if(toggleButton && passwordInput && toggleIcon) {
+            toggleButton.addEventListener('click', () => {
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    toggleIcon.textContent = "visibility_off";
+                } else {
+                    passwordInput.type = "password";
+                    toggleIcon.textContent = "visibility";
+                }
+            });
+        }
+    </script>
+</body></html>

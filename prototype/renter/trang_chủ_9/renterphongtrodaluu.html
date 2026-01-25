@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đã lưu - Thuê phòng trọ</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "primary-dark": "#1a4fb0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display selection:bg-primary/30">
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-4 py-3">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-slate-900 dark:text-white">Phòng đã lưu</h1>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-white dark:ring-gray-700 shadow-sm" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAajLU1vro0qfn8-rCJkGEt5Uy9N2VIhd9n1aadZjHqW0ft_Y7p0en-vpT0rwEucbV_7TrhruaYs4pKHbKJ1Yo_6167IiNp48Hvk-sfHH_FENlypeEym1MySox9i-QmWMdqR0zsaVCXeGbqnzC4t5zwdZFwMtSsYl2zDHPRyisY1ZnFYYlangw3dbUWbjzWicPt_czNONwGTEBMOFu950uZVoed5GdZk_a8qhF-vJRwPmhHC8FYmXSJJ8EGxNWdp6AKxgGDbfWHNFU");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-md mx-auto flex flex-col gap-5 p-4 pb-24 overflow-x-hidden">
+<div class="flex items-center justify-between">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">3 phòng đã lưu</p>
+<button class="flex items-center gap-1 text-primary text-sm font-semibold">
+<span>Mới nhất</span>
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col relative group transition-all hover:shadow-md">
+<div class="relative w-full h-48 bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDk6qSkfrcKwV537DEHKjUDv7CW5X8ZQrzpu6crELxu2DVoHIhKKY52mVy3OQ9_tPpOog5PezJ2WvZg_iAU82Jrqg_eYXEZCQ48QKj3hL9yn1T7N6_Cec0cUCCjV00_kCl1bJ0EI6LjKqR0ld4GH1r__BMx0AZ-7YnsCXOObsKe-kJtYLGXzmHhgkX3EqmJl_6krV91qruNPgCl5V8Sk_R4HhQdVjL007v0cBk_mkVUiudeFN9VictOMqjdr1JW61walV9N-3XAUBM");'></div>
+<div class="absolute top-3 right-3">
+<button class="bg-white/90 dark:bg-slate-800/90 backdrop-blur p-2 rounded-full shadow-sm text-red-500 hover:bg-red-50 transition-colors group/btn">
+<span class="material-symbols-outlined filled text-[20px] leading-none fill-current">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 bg-slate-900/70 backdrop-blur-sm px-2.5 py-1 rounded-md">
+<p class="text-white text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                            4.5 triệu/tháng
+                         </p>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-base leading-tight mb-1">Căn hộ Studio Full nội thất</h3>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="line-clamp-1">Ngõ 165 Cầu Giấy, Quan Hoa</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-200 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKhDl_uBuKhrhcrAClhkOZxkYC-to0LRoKWxDyMUzmjbco5Tw-9gSKtFSnDv83gNa11bsPIHqTENjyZQQ6ovnEMUjuFq_8Ph7YkqsiGxm3nfq4_mFjOBtKOrcQQfQb7ImGRd3ACNS-NgiypXiLu39rjJ5CQvPocTxH_S8UnjagmxY3z-KTys8EPXhE4XSGsoRl3lhw_VLh1NIfpl9CaDd04paXBP8h9yU1LFLFuSN4mK8fcWGYC5yfTF0aPXp3sSHDr8rXBC7tBCI");'></div>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">A. Tuấn Anh</span>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">Chi tiết</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col relative group transition-all hover:shadow-md">
+<div class="relative w-full h-48 bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0XWFl0FASC2WPI_c9GI4tm0BAtXkydilMbvUMfuCLx5pQkbhAQRyuPhCSpTpo6FKCSp19hSx3RTES-OXTVXt2N0Plu3uQCrSEjPtFqSqtmthvd33bvhF4yWWjncY8z8WXwgRCw_Gsgsia0UP-167HxMtTzsZNtPPoJtbj_4KKRVbVcK0LwsyxKTf2X7W0Ba_pUjHzzlZVx9XqG-Ohe8Gy9ko0dHDjSr15_VLfwDHlXsIIQ7xNHBCrfpkrdXdpZAFSC6D-b4D6NlQ");'></div>
+<div class="absolute top-3 right-3">
+<button class="bg-white/90 dark:bg-slate-800/90 backdrop-blur p-2 rounded-full shadow-sm text-red-500 hover:bg-red-50 transition-colors">
+<span class="material-symbols-outlined filled text-[20px] leading-none fill-current">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 bg-slate-900/70 backdrop-blur-sm px-2.5 py-1 rounded-md">
+<p class="text-white text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                            3.2 triệu/tháng
+                         </p>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-base leading-tight mb-1">Phòng trọ khép kín gần ĐH Giao Thông</h3>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="line-clamp-1">Số 10, Ngách 2, Láng Hạ, Đống Đa</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-200 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMC3BPbDlae4YFomGKr_KbJ6OqFgx1tCLQbIsZVVkQlJhT1K9dckaCC4mmmup7aDFKNK2sfEvCo8kkzeY1QbOakTbo9TiAQoQWTeXrUQgk-uKxF268vZ_T3MWpHVzIAJxw6S15KTJyFRmUHI0ycjS9ANCrB2jULE4TT7mi5ApNjCjt-wPwiYPf89ms89QaUmjHH2Ww1Y9Bs8LXWdkFRu9EIKXrYAxbyGf8o_06yMn6HFNGgFCJjqR_gM-lsV6u4H1A7bo8FiR2GWg");'></div>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Chị Lan</span>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">Chi tiết</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col relative group transition-all hover:shadow-md">
+<div class="relative w-full h-48 bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2lOh0PysHvIPu2HGuKHw0DS6b1CHfOtt1rXVOgIUT_sFfSleKR4eHlZaZhVZYEwN_sGrhEcYHWdEnOMn7EOHUx1oqP-2xQEJhnSEtat3eKq-aM9BHZ4JuAzdEzLkznYMaEhKTDOarFmCv98PhBSUshxGiDyJbC6gSbg3a3PMsF5M7ua-B-q-Bxr-mygXI5mlh8BkvxgEhSO-Z9bqSUynS3SpH1qTiQmgsB03lmidq7jG6aqR1-hbAoXVcTcVLQQVVUWNtOd-njM8");'></div>
+<div class="absolute top-3 right-3">
+<button class="bg-white/90 dark:bg-slate-800/90 backdrop-blur p-2 rounded-full shadow-sm text-red-500 hover:bg-red-50 transition-colors">
+<span class="material-symbols-outlined filled text-[20px] leading-none fill-current">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 bg-slate-900/70 backdrop-blur-sm px-2.5 py-1 rounded-md">
+<p class="text-white text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                            5.0 triệu/tháng
+                         </p>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-base leading-tight mb-1">Chung cư mini cao cấp - Đống Đa</h3>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="line-clamp-1">123 Đường Láng, Phường Láng Thượng</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-200 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjC1iUUJBNo1oqh3M5_OFsZ9qhDFShhyotrz8hUf4yEosszw7_MNimHCD56OMb2wRX5tEcS-_sptHheo9whx0zNbljRGyewvex3Ksc3pZIdefs2oHqid5c--Lkub8uUqWOYkFDwXpeBNCJKWYET4GJu4YU9tErUjulpAMGidEp5vjFYjwi1Rjd_1bEtk2zm8gCRvqMynoKPPTB6-SOxEFShp-zde9TWC0kUa5aAufoFhPWhaubRHBq5_L_S9tiX9nz5ta64nqbN1A");'></div>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Cô Hạnh</span>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">Chi tiết</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pb-safe pt-2 px-6 z-40">
+<div class="flex justify-between items-center max-w-md mx-auto h-14 pb-2">
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-16 transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16 transition-colors">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-[10px] font-bold">Đã lưu</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-16 transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-medium">Tin nhắn</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-16 transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Cá nhân</span>
+</button>
+</div>
+</nav>
+<div class="h-20 w-full bg-transparent"></div>
+</body></html>

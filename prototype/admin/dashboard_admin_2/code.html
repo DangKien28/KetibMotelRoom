@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cài đặt (Admin)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b6cee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "card-light": "#ffffff",
+              "card-dark": "#1a2230",
+              "text-primary-dark": "#ffffff",
+              "text-secondary-dark": "#9ca3af",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled {
+             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-text-primary-dark font-display min-h-screen flex flex-col pb-24">
+<header class="flex items-center justify-between p-5 pb-4 bg-background-light dark:bg-background-dark sticky top-0 z-10">
+<h1 class="text-3xl font-bold leading-tight">Cài đặt</h1>
+<div class="h-10 w-10 rounded-full bg-cover bg-center border border-gray-200 dark:border-gray-700 shadow-sm" data-alt="Admin profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnIwYKTGyXxG4ltBUhW_byhuDqTgv4v-uZoELAvGa1vR__ZDu3_i4kapf8jnPL6reK_EA9czxNuJt8niM5r47vOKJK3PgZD6KBljMEJNEc49VLymcaCQROgihJrcylKpk5IaOaMBCH_fEqQFgUojmDaQJNpUZLCsxWUIpIGLNOC6rHeta9nOL7YRuOxrxA7WQ3SmqCkf_OjvvLEfPN-surOgSLpsLqrGw4_8hUcRgTeeWZN8ohbx3p6XL4XEYjzpJW9FxmCFh_uy8');"></div>
+</header>
+<main class="flex-1 px-4 flex flex-col gap-6">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</span>
+<input class="w-full py-3 pl-10 pr-4 text-sm bg-white dark:bg-card-dark border-none rounded-xl shadow-sm focus:ring-2 focus:ring-primary placeholder-gray-400 dark:placeholder-gray-500" placeholder="Tìm kiếm cài đặt..." type="text"/>
+</div>
+<section>
+<h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 px-1 uppercase tracking-wider">Tài khoản</h3>
+<div class="flex flex-col rounded-xl bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden divide-y divide-gray-100 dark:divide-gray-800">
+<button class="flex items-center justify-between p-4 w-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">manage_accounts</span>
+</div>
+<span class="text-base font-medium">Quản lý tài khoản Admin</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+<button class="flex items-center justify-between p-4 w-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded-full bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<span class="text-base font-medium">Quản lý quyền truy cập</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+</div>
+</section>
+<section>
+<h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 px-1 uppercase tracking-wider">Hệ thống</h3>
+<div class="flex flex-col rounded-xl bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden divide-y divide-gray-100 dark:divide-gray-800">
+<button class="flex items-center justify-between p-4 w-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">tune</span>
+</div>
+<div class="flex flex-col items-start text-left">
+<span class="text-base font-medium">Cài đặt chung</span>
+<span class="text-xs text-gray-500">Ngôn ngữ, Chủ đề</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+<button class="flex items-center justify-between p-4 w-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<span class="text-base font-medium">Cài đặt thông báo</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+</div>
+</section>
+<section>
+<h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 px-1 uppercase tracking-wider">Thông tin</h3>
+<div class="flex flex-col rounded-xl bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden divide-y divide-gray-100 dark:divide-gray-800">
+<button class="flex items-center justify-between p-4 w-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<span class="text-base font-medium">Chính sách và điều khoản</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+<button class="flex items-center justify-between p-4 w-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="h-9 w-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">info</span>
+</div>
+<span class="text-base font-medium">Thông tin về ứng dụng</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm text-gray-400">v1.0.4</span>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+<section>
+<button class="w-full p-4 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 text-red-500 font-bold hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors shadow-sm">
+            Đăng xuất
+        </button>
+<p class="text-center text-xs text-gray-400 mt-4">Phiên bản Admin System 2.1</p>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-card-dark border-t border-gray-200 dark:border-gray-800 pb-5 pt-2 px-6 z-50">
+<div class="flex justify-between items-center">
+<button class="flex flex-col items-center gap-1 w-16 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Tổng quan</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">apartment</span>
+<span class="text-[10px] font-medium">Phòng trọ</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Người dùng</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-primary">
+<span class="material-symbols-outlined filled">settings</span>
+<span class="text-[10px] font-bold">Cài đặt</span>
+</button>
+</div>
+</nav>
+
+</body></html>

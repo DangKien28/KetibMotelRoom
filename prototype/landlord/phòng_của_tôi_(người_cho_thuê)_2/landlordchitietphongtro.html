@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chi tiết phòng - Quản lý trọ</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased selection:bg-primary/20">
+<div class="relative min-h-screen flex flex-col max-w-md mx-auto shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-30 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="w-10">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white text-center flex-1">Chi tiết phòng</h1>
+<div class="w-10 flex justify-end">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-primary">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col pb-24 overflow-y-auto hide-scrollbar">
+<section class="relative w-full h-64 bg-gray-200 dark:bg-gray-800 group">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJsPYOkulnnL_-93VlNoxQN5uzu0PPMxTdJFsm-o9tNxmwGfHjnlDVwinrqN5XOAn6J0IfumqIfngL6EzG7ptvO6uzstOOzDASeJE9XeyeGX_ZtiDkCuE4SnEA2IhVUXAI1nFRGlDxM_y51J5xoPiUOv9GzEd0nh8o3NEQPWLSdXsJ1xBh4-Ju3RxnlXN3snIGnCVD7CmIaE9ISHNKF14rNyVlbnqTh-v-3DA_rdgMj9xMxXKODPzSChZta749R-Zc9guwcOq07cg');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">photo_library</span>
+<span>1/5</span>
+</div>
+</section>
+<section class="px-5 py-5 -mt-6 relative z-10 bg-background-light dark:bg-background-dark rounded-t-3xl border-t border-white/10">
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-xl font-extrabold text-slate-900 dark:text-white flex-1 pr-2">Phòng trọ cao cấp Q.3</h2>
+<span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-primary dark:text-blue-300 text-xs font-bold shrink-0">
+                        Đang thuê
+                    </span>
+</div>
+<div class="flex items-start gap-1.5 text-slate-500 dark:text-slate-400 text-sm mb-4">
+<span class="material-symbols-outlined text-[18px] mt-0.5 text-primary">location_on</span>
+<span class="leading-snug">123 CMT8, Phường 10, Quận 3, TP.HCM</span>
+</div>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-2xl font-bold text-primary">4.500.000 đ</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">/tháng</span>
+</div>
+<div class="h-px w-full bg-gray-200 dark:bg-gray-800 mb-6"></div>
+<div class="mb-6">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">Tiện ích</h3>
+<div class="grid grid-cols-4 gap-3">
+<div class="flex flex-col items-center gap-1.5">
+<div class="w-12 h-12 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<span class="text-[10px] font-medium text-slate-600 dark:text-slate-400">Wifi</span>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="w-12 h-12 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">ac_unit</span>
+</div>
+<span class="text-[10px] font-medium text-slate-600 dark:text-slate-400">Máy lạnh</span>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="w-12 h-12 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_parking</span>
+</div>
+<span class="text-[10px] font-medium text-slate-600 dark:text-slate-400">Giữ xe</span>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="w-12 h-12 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center text-slate-400 dark:text-slate-600">
+<span class="material-symbols-outlined">more_horiz</span>
+</div>
+<span class="text-[10px] font-medium text-slate-600 dark:text-slate-400">Thêm</span>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Mô tả chi tiết</h3>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Phòng mới xây, rộng rãi thoáng mát, có ban công view đẹp. Đầy đủ nội thất cơ bản: giường, tủ, máy lạnh. Giờ giấc tự do, không chung chủ, an ninh đảm bảo có camera 24/7.
+                    </p>
+</div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Danh sách hợp đồng</h3>
+<button class="text-xs font-bold text-primary hover:text-blue-600 flex items-center">
+                            Xem tất cả <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-blue-200 dark:border-blue-900/50 relative overflow-hidden active:scale-[0.99] transition-transform">
+<div class="absolute top-0 right-0 p-2">
+<span class="flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+</span>
+</div>
+<div class="flex items-start gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Nguyễn Văn Cường</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Người thuê hiện tại</p>
+</div>
+</div>
+<div class="bg-background-light dark:bg-gray-800/50 rounded-lg p-3 flex justify-between items-center mb-2">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-slate-400 font-semibold tracking-wider">Hiệu lực</span>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-200">01/06/2023 - 01/06/2024</span>
+</div>
+<div class="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col text-right">
+<span class="text-[10px] uppercase text-slate-400 font-semibold tracking-wider">Trạng thái</span>
+<span class="text-sm font-bold text-green-600 dark:text-green-400">Đang hoạt động</span>
+</div>
+</div>
+<div class="text-center pt-1">
+<span class="text-xs text-primary font-bold flex items-center justify-center gap-1">
+                                    Xem chi tiết hợp đồng <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-700 flex items-center justify-between opacity-80 active:scale-[0.99] transition-transform">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 shrink-0">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-slate-700 dark:text-slate-300">Trần Thị Mai</h4>
+<p class="text-[10px] text-slate-500">Đã kết thúc: 31/05/2023</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 z-50 w-full max-w-md bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 pb-safe pt-2 px-2">
+<div class="flex items-center justify-around h-16 pb-2">
+<button class="flex flex-col items-center gap-1 w-16 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400;">home</span>
+<span class="text-[10px] font-medium">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400;">chat_bubble</span>
+<span class="text-[10px] font-medium">Tin nhắn</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 400;">grid_view</span>
+<span class="text-[10px] font-bold">Quản lý</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400;">person</span>
+<span class="text-[10px] font-medium">Tài khoản</span>
+</button>
+</div>
+</nav>
+<div class="h-safe-area-bottom w-full bg-white dark:bg-surface-dark"></div>
+</div>
+
+</body></html>

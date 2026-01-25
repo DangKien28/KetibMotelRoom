@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cá nhân</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            /* iOS-like smooth scrolling */
+            -webkit-overflow-scrolling: touch; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-display">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<div class="flex items-center justify-between px-4 h-14">
+<!-- Left Icon (Back or decorative depending on flow, keeping implicit back behavior) -->
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-slate-900 dark:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<!-- Title -->
+<h1 class="text-lg font-bold text-center flex-1 text-slate-900 dark:text-white tracking-tight">Cá nhân</h1>
+<!-- Right Icon (Placeholder for balance) -->
+<div class="size-10"></div>
+</div>
+</div>
+<!-- Scrollable Content -->
+<main class="flex-1 flex flex-col w-full max-w-md mx-auto pb-24">
+<!-- Profile Header Section -->
+<div class="flex flex-col items-center pt-8 pb-8 px-6">
+<div class="relative group">
+<!-- Avatar Ring with Primary Color -->
+<div class="p-1 rounded-full border-2 border-primary border-dashed">
+<div class="size-28 rounded-full bg-gray-200 dark:bg-gray-700 bg-center bg-cover shadow-lg" data-alt="Portrait of a young man smiling against a plain background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQhf7xqVBTAP8rO1FFv7o_hhzyqu7q2We_7Jvg0eJ14G_zxPaTAjO2SRotD3W4AhygmRhC_7cu7knP-8wJGtU5l03V9_3nnaK59drhkHrAaF37JPPEmA0H1ohz0FDF7aD8eMSJKmRMucbnu6_LN0aC205eOYM0ohpC_3JkKo5miAZOyYuKGHrnavGVD4O-uPniZybghYZu428kZO5XtGViN9MpInwH13F5DYXi5dqGLMfHnu2prscA27WDkgldw9dswEbbBziD6BA');">
+</div>
+</div>
+<!-- Edit Badge (Optional decorative element) -->
+<button class="absolute bottom-1 right-1 bg-primary text-white p-1.5 rounded-full shadow-md border-2 border-white dark:border-background-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<div class="mt-4 text-center">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white leading-tight">Nguyễn Văn A</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1 font-medium text-sm">0912 *** ***</p>
+</div>
+</div>
+<!-- Menu Group 1: Account & Info -->
+<div class="px-4 mb-6">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 ml-2">Tài khoản</p>
+<div class="bg-white dark:bg-[#1a2230] rounded-2xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-800">
+<!-- Item 1: Personal Info -->
+<button class="w-full flex items-center gap-4 p-4 active:bg-gray-50 dark:active:bg-gray-700/50 transition-colors group border-b border-gray-100 dark:border-gray-800 last:border-0">
+<div class="size-10 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1 text-left">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Thông tin cá nhân</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Chỉnh sửa hồ sơ của bạn</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-xl">chevron_right</span>
+</button>
+<!-- Item 2: Room Info -->
+<button class="w-full flex items-center gap-4 p-4 active:bg-gray-50 dark:active:bg-gray-700/50 transition-colors group border-b border-gray-100 dark:border-gray-800 last:border-0">
+<div class="size-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-500 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">home</span>
+</div>
+<div class="flex-1 text-left">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Thông tin phòng trọ</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hợp đồng &amp; tiện ích</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-xl">chevron_right</span>
+</button>
+<!-- Item 3: Rental History -->
+<button class="w-full flex items-center gap-4 p-4 active:bg-gray-50 dark:active:bg-gray-700/50 transition-colors group">
+<div class="size-10 rounded-xl bg-teal-50 dark:bg-teal-900/20 text-teal-500 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">history</span>
+</div>
+<div class="flex-1 text-left">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Lịch sử thuê trọ</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Lịch sử thanh toán &amp; hóa đơn</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Menu Group 2: System -->
+<div class="px-4">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 ml-2">Hệ thống</p>
+<div class="bg-white dark:bg-[#1a2230] rounded-2xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-800">
+<!-- Logout -->
+<button class="w-full flex items-center gap-4 p-4 active:bg-red-50 dark:active:bg-red-900/10 transition-colors group">
+<div class="size-10 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-500 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<div class="flex-1 text-left">
+<p class="text-sm font-semibold text-red-500">Đăng xuất</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-red-500 transition-colors text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- App Version (Footer Text) -->
+<div class="mt-8 text-center">
+<p class="text-xs text-slate-400">Phiên bản 1.0.2</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Simulated) -->
+<div class="fixed bottom-0 w-full bg-white dark:bg-[#1a2230] border-t border-gray-200 dark:border-gray-800 pb-safe pt-2 px-6">
+<div class="flex justify-between items-center max-w-md mx-auto h-16">
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors w-16">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-medium">Tìm phòng</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Đã lưu</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors w-16">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-medium">Tin nhắn</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined fill-current">person</span>
+<span class="text-[10px] font-medium">Cá nhân</span>
+</button>
+</div>
+</div>
+</body></html>

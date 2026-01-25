@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b6cee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "card-light": "#ffffff",
+              "card-dark": "#1a2230",
+              "text-primary-dark": "#ffffff",
+              "text-secondary-dark": "#9ca3af",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-text-primary-dark font-display min-h-screen flex flex-col pb-24">
+<header class="flex items-center justify-between p-5 pb-2 bg-background-light dark:bg-background-dark sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-cover bg-center border border-gray-200 dark:border-gray-700" data-alt="Admin profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnIwYKTGyXxG4ltBUhW_byhuDqTgv4v-uZoELAvGa1vR__ZDu3_i4kapf8jnPL6reK_EA9czxNuJt8niM5r47vOKJK3PgZD6KBljMEJNEc49VLymcaCQROgihJrcylKpk5IaOaMBCH_fEqQFgUojmDaQJNpUZLCsxWUIpIGLNOC6rHeta9nOL7YRuOxrxA7WQ3SmqCkf_OjvvLEfPN-surOgSLpsLqrGw4_8hUcRgTeeWZN8ohbx3p6XL4XEYjzpJW9FxmCFh_uy8');"></div>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold leading-tight">Hello, Admin 👋</h1>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">System Overview</span>
+</div>
+</div>
+<button class="flex items-center justify-center h-10 w-10 rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-700 relative text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2.5 h-2 w-2 rounded-full bg-red-500 ring-1 ring-white dark:ring-card-dark"></span>
+</button>
+</header>
+<main class="flex-1 px-4 py-2 flex flex-col gap-6">
+<section>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-3 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[20px]">group</span>
+</div>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Users</span>
+</div>
+<div>
+<p class="text-2xl font-bold leading-none tracking-tight">1,250</p>
+<p class="text-xs text-green-600 font-medium mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +5% vs last week
+                        </p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-orange-100 dark:border-orange-900/30 ring-1 ring-orange-500/10">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/40 dark:text-orange-400">
+<span class="material-symbols-outlined text-[20px]">home_work</span>
+</div>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Pending</span>
+</div>
+<div>
+<p class="text-2xl font-bold leading-none tracking-tight">12</p>
+<p class="text-xs text-orange-600 dark:text-orange-400 font-bold mt-1">
+                            Action Needed
+                        </p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Contracts</span>
+</div>
+<div>
+<p class="text-2xl font-bold leading-none tracking-tight">45</p>
+<p class="text-xs text-green-600 font-medium mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +12%
+                        </p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Revenue</span>
+</div>
+<div>
+<p class="text-2xl font-bold leading-none tracking-tight">$12.5K</p>
+<p class="text-xs text-green-600 font-medium mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +8%
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Quick Actions</h3>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 active:scale-95 transition-transform">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">checklist</span>
+</div>
+<span class="text-[11px] font-semibold text-center leading-tight">Approve<br/>Listings</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 active:scale-95 transition-transform">
+<div class="h-12 w-12 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined">manage_accounts</span>
+</div>
+<span class="text-[11px] font-semibold text-center leading-tight">Manage<br/>Users</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 active:scale-95 transition-transform">
+<div class="h-12 w-12 rounded-full bg-teal-50 dark:bg-teal-900/20 flex items-center justify-center text-teal-600">
+<span class="material-symbols-outlined">bar_chart</span>
+</div>
+<span class="text-[11px] font-semibold text-center leading-tight">View<br/>Reports</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 active:scale-95 transition-transform">
+<div class="h-12 w-12 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<span class="text-[11px] font-semibold text-center leading-tight">System<br/>Settings</span>
+</button>
+</div>
+</section>
+<section class="rounded-xl bg-white dark:bg-card-dark p-5 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Weekly User Growth</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">New tenants &amp; landlords</p>
+</div>
+<div class="bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded text-xs font-bold text-green-700 dark:text-green-400">
+                    +124 Users
+                </div>
+</div>
+<div class="relative h-32 w-full">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 50">
+<defs>
+<linearGradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#2b6cee;stop-opacity:0.2"></stop>
+<stop offset="100%" style="stop-color:#2b6cee;stop-opacity:0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,50 L0,35 Q10,25 20,30 T40,20 T60,25 T80,10 L100,15 L100,50 Z" fill="url(#gradient)"></path>
+<path d="M0,35 Q10,25 20,30 T40,20 T60,25 T80,10 L100,15" fill="none" stroke="#2b6cee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="20" cy="30" fill="white" r="1.5" stroke="#2b6cee" stroke-width="1"></circle>
+<circle cx="40" cy="20" fill="white" r="1.5" stroke="#2b6cee" stroke-width="1"></circle>
+<circle cx="60" cy="25" fill="white" r="1.5" stroke="#2b6cee" stroke-width="1"></circle>
+<circle cx="80" cy="10" fill="white" r="1.5" stroke="#2b6cee" stroke-width="1"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-2 px-1">
+<span class="text-[10px] text-gray-400 font-medium">Mon</span>
+<span class="text-[10px] text-gray-400 font-medium">Tue</span>
+<span class="text-[10px] text-gray-400 font-medium">Wed</span>
+<span class="text-[10px] text-gray-400 font-medium">Thu</span>
+<span class="text-[10px] text-gray-400 font-medium">Fri</span>
+<span class="text-[10px] text-gray-400 font-medium">Sat</span>
+<span class="text-[10px] text-gray-400 font-medium">Sun</span>
+</div>
+</section>
+<section>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3 px-1">Recent Activity</h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">add_home</span>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">New Room Posted</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">By user @john_doe • 2m ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 shrink-0">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Contract #8829 Signed</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Room 204, Downtown • 1h ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-card-dark border-t border-gray-200 dark:border-gray-800 pb-5 pt-2 px-6 z-50">
+<div class="flex justify-between items-center">
+<button class="flex flex-col items-center gap-1 w-16 text-primary">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Tổng quan</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">apartment</span>
+<span class="text-[10px] font-medium">Phòng trọ</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Người dùng</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Cài đặt</span>
+</button>
+</div>
+</nav>
+</body></html>

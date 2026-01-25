@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>Chào mừng đến với Renter</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-4 justify-between sticky top-0 z-10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="text-primary flex size-10 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined">apartment</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-extrabold leading-tight tracking-tight flex-1 text-center pr-10">Renter</h2>
+</div>
+<!-- Hero Section (HeaderImage Simulation) -->
+<div class="flex-1 overflow-y-auto">
+<div class="@container">
+<div class="px-4 py-2">
+<div class="relative bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-xl min-h-[380px] shadow-lg" data-alt="Modern apartment building with clear blue sky" style='background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDq_H6cT0Nuo5QPKT5puJ2yzlv0hfsRTamJdLUYh32jTxONWUiBpB9XYBiOhxupW7T_JwBahbD6zaKsJ8Uulsw_gLPfNszGddQvFjxgAMDexPjl9CKtSuKmiZo6KFJnomoL9-kTykv8ryog-3-RhDl2jY6kY2t23z9ZphSGREXwPZ7fP6ztgug2UzL_O8_1gaTmznUqKWaHwflxk5Wtus5AGC9SY0BKRoXZ4zHDJbZLnZ6TpZ3Oalrj2qj6CEi6MxVla7qT44HepfY");'>
+<div class="p-6 text-white">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/90 text-[12px] font-bold uppercase tracking-wider mb-2">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span>An tâm tuyệt đối</span>
+</div>
+<h3 class="text-2xl font-bold leading-tight">Tìm phòng ưng ý,<br/>Ký kết trong tích tắc</h3>
+</div>
+<!-- Pagination Dots -->
+<div class="flex justify-center gap-2 pb-6">
+<div class="h-1.5 w-6 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-white opacity-40"></div>
+<div class="size-1.5 rounded-full bg-white opacity-40"></div>
+<div class="size-1.5 rounded-full bg-white opacity-40"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Headline Text -->
+<div class="px-6 pt-8 pb-2">
+<h1 class="text-slate-900 dark:text-white text-[32px] font-extrabold leading-[1.15] text-center">
+                    Chào mừng đến với <span class="text-primary">Renter</span>
+</h1>
+</div>
+<!-- Body Text -->
+<div class="px-8 pb-8">
+<p class="text-slate-500 dark:text-slate-400 text-base font-medium leading-relaxed text-center">
+                    Giải pháp tìm phòng trọ và ký hợp đồng điện tử minh bạch, an toàn và nhanh chóng nhất hiện nay.
+                </p>
+</div>
+<!-- Features Grid (Additional context) -->
+<div class="grid grid-cols-2 gap-4 px-6 mb-8">
+<div class="flex flex-col items-center p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">search_check</span>
+<span class="text-sm font-bold text-slate-800 dark:text-slate-200">Tìm kiếm nhanh</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">history_edu</span>
+<span class="text-sm font-bold text-slate-800 dark:text-slate-200">Hợp đồng Online</span>
+</div>
+</div>
+</div>
+<!-- Button Group (Fixed at Bottom) -->
+<div class="px-6 py-8 bg-white dark:bg-background-dark border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col gap-3 max-w-[480px] mx-auto">
+<button class="group flex items-center justify-center gap-2 overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-lg font-bold transition-all active:scale-95 shadow-lg shadow-primary/25">
+<span class="truncate">Bắt đầu - Đăng ký</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-bold transition-all active:scale-95">
+<span class="truncate">Đăng nhập</span>
+</button>
+</div>
+<!-- Terms and conditions -->
+<p class="mt-6 text-center text-xs text-slate-400 font-medium">
+                Bằng việc tiếp tục, bạn đồng ý với <a class="text-primary underline" href="#">Điều khoản dịch vụ</a>
+</p>
+</div>
+<!-- Safe Area Spacer for iOS -->
+<div class="h-6 bg-white dark:bg-background-dark"></div>
+</div>
+</body></html>

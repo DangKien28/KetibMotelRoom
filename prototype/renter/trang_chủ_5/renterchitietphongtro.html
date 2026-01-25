@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chi tiết phòng trọ - Thuê phòng trọ</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "primary-dark": "#1a4fb0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display selection:bg-primary/30">
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-3 flex items-center justify-between border-b border-transparent transition-all duration-200" id="header">
+<button class="p-2 -ml-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-base font-bold text-slate-900 dark:text-white absolute left-1/2 -translate-x-1/2">Chi tiết phòng</h1>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="p-2 -mr-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-red-500">
+<span class="material-symbols-outlined filled">favorite</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-md mx-auto flex flex-col pb-32 overflow-x-hidden">
+<section class="relative w-full aspect-[4/3] bg-slate-200 dark:bg-slate-800">
+<div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full h-full">
+<div class="snap-center shrink-0 w-full h-full bg-cover bg-center" data-alt="Modern studio apartment interior with sunlight" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDk6qSkfrcKwV537DEHKjUDv7CW5X8ZQrzpu6crELxu2DVoHIhKKY52mVy3OQ9_tPpOog5PezJ2WvZg_iAU82Jrqg_eYXEZCQ48QKj3hL9yn1T7N6_Cec0cUCCjV00_kCl1bJ0EI6LjKqR0ld4GH1r__BMx0AZ-7YnsCXOObsKe-kJtYLGXzmHhgkX3EqmJl_6krV91qruNPgCl5V8Sk_R4HhQdVjL007v0cBk_mkVUiudeFN9VictOMqjdr1JW61walV9N-3XAUBM");'>
+</div>
+<div class="snap-center shrink-0 w-full h-full bg-cover bg-center" data-alt="Cozy bedroom angle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0XWFl0FASC2WPI_c9GI4tm0BAtXkydilMbvUMfuCLx5pQkbhAQRyuPhCSpTpo6FKCSp19hSx3RTES-OXTVXt2N0Plu3uQCrSEjPtFqSqtmthvd33bvhF4yWWjncY8z8WXwgRCw_Gsgsia0UP-167HxMtTzsZNtPPoJtbj_4KKRVbVcK0LwsyxKTf2X7W0Ba_pUjHzzlZVx9XqG-Ohe8Gy9ko0dHDjSr15_VLfwDHlXsIIQ7xNHBCrfpkrdXdpZAFSC6D-b4D6NlQ");'>
+</div>
+<div class="snap-center shrink-0 w-full h-full bg-cover bg-center" data-alt="Another view of the room" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2lOh0PysHvIPu2HGuKHw0DS6b1CHfOtt1rXVOgIUT_sFfSleKR4eHlZaZhVZYEwN_sGrhEcYHWdEnOMn7EOHUx1oqP-2xQEJhnSEtat3eKq-aM9BHZ4JuAzdEzLkznYMaEhKTDOarFmCv98PhBSUshxGiDyJbC6gSbg3a3PMsF5M7ua-B-q-Bxr-mygXI5mlh8BkvxgEhSO-Z9bqSUynS3SpH1qTiQmgsB03lmidq7jG6aqR1-hbAoXVcTcVLQQVVUWNtOd-njM8");'>
+</div>
+</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 px-3 py-1.5 bg-black/30 backdrop-blur-sm rounded-full">
+<span class="size-1.5 rounded-full bg-white"></span>
+<span class="size-1.5 rounded-full bg-white/50"></span>
+<span class="size-1.5 rounded-full bg-white/50"></span>
+</div>
+<div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded-md backdrop-blur-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">photo_library</span>
+                1/5
+            </div>
+</section>
+<section class="px-5 pt-5 pb-2 bg-surface-light dark:bg-surface-dark rounded-b-3xl shadow-sm mb-2">
+<div class="flex flex-col gap-1 mb-3">
+<div class="flex justify-between items-start">
+<span class="inline-block px-2.5 py-1 bg-primary/10 text-primary text-xs font-bold rounded-md uppercase tracking-wide">Studio</span>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-extrabold text-primary">4.5 tr</span>
+<span class="text-sm font-medium text-slate-500">/tháng</span>
+</div>
+</div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white leading-tight mt-1">
+                    Căn hộ Studio Full nội thất - View thoáng mát
+                </h2>
+</div>
+<div class="flex items-start gap-2 text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5 text-primary">location_on</span>
+<p class="text-sm font-medium leading-normal">
+                    Số 165 Cầu Giấy, Phường Quan Hoa, Quận Cầu Giấy, Hà Nội
+                </p>
+</div>
+<div class="grid grid-cols-3 gap-3 py-4 border-t border-slate-100 dark:border-slate-700">
+<div class="flex flex-col items-center gap-1 text-center">
+<span class="text-slate-400 text-xs font-semibold uppercase">Diện tích</span>
+<span class="text-slate-900 dark:text-white font-bold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-slate-400">square_foot</span>
+                        30m²
+                    </span>
+</div>
+<div class="flex flex-col items-center gap-1 text-center border-l border-r border-slate-100 dark:border-slate-700">
+<span class="text-slate-400 text-xs font-semibold uppercase">Trống từ</span>
+<span class="text-slate-900 dark:text-white font-bold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-slate-400">calendar_today</span>
+                        Ngay lập tức
+                    </span>
+</div>
+<div class="flex flex-col items-center gap-1 text-center">
+<span class="text-slate-400 text-xs font-semibold uppercase">Tối đa</span>
+<span class="text-slate-900 dark:text-white font-bold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-slate-400">group</span>
+                        2 người
+                    </span>
+</div>
+</div>
+</section>
+<section class="bg-surface-light dark:bg-surface-dark px-5 py-4 mb-2">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider">Thông tin chủ trọ</h3>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-full bg-slate-200 bg-cover bg-center ring-2 ring-primary/20" data-alt="Landlord Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKhDl_uBuKhrhcrAClhkOZxkYC-to0LRoKWxDyMUzmjbco5Tw-9gSKtFSnDv83gNa11bsPIHqTENjyZQQ6ovnEMUjuFq_8Ph7YkqsiGxm3nfq4_mFjOBtKOrcQQfQb7ImGRd3ACNS-NgiypXiLu39rjJ5CQvPocTxH_S8UnjagmxY3z-KTys8EPXhE4XSGsoRl3lhw_VLh1NIfpl9CaDd04paXBP8h9yU1LFLFuSN4mK8fcWGYC5yfTF0aPXp3sSHDr8rXBC7tBCI");'>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<h4 class="font-bold text-slate-900 dark:text-white">A. Tuấn Anh</h4>
+<span class="material-symbols-outlined text-blue-500 text-[16px] filled">verified</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500 dark:text-slate-400">Phản hồi 98%</span>
+<span class="size-1 bg-slate-300 rounded-full"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Tham gia 2 năm</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="size-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</section>
+<section class="bg-surface-light dark:bg-surface-dark px-5 py-4 mb-2">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wider">Chi phí sinh hoạt</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<div class="size-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">electric_bolt</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tiền điện</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">3.5k <span class="text-xs font-normal">/kWh</span></p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<div class="size-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tiền nước</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">100k <span class="text-xs font-normal">/người</span></p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<div class="size-10 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Internet</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Free</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<div class="size-10 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">cleaning_services</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Vệ sinh</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">50k <span class="text-xs font-normal">/phòng</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-light dark:bg-surface-dark px-5 py-4 mb-2">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wider">Tiện nghi &amp; Dịch vụ</h3>
+<div class="grid grid-cols-4 gap-y-6 gap-x-2">
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">ac_unit</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Điều hòa</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">water_heater</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Nóng lạnh</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bed</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Giường</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">kitchen</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Tủ lạnh</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">door_front</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Tủ quần áo</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">local_laundry_service</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Máy giặt</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-primary/5 group-hover:border-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">two_wheeler</span>
+</div>
+<span class="text-[11px] font-medium text-slate-600 dark:text-slate-300">Để xe</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center group cursor-default">
+<div class="size-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/30">
+<span class="text-xs font-bold">+5</span>
+</div>
+<span class="text-[11px] font-medium text-slate-500">Xem thêm</span>
+</div>
+</div>
+</section>
+<section class="bg-surface-light dark:bg-surface-dark px-5 py-4">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Mô tả chi tiết</h3>
+<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                Phòng rộng thoáng mát, ban công phơi đồ riêng biệt. <br/>
+                Nằm trong khu dân trí cao, an ninh đảm bảo, camera 24/7, giờ giấc tự do không chung chủ. <br/>
+                Gần chợ, siêu thị, các trường đại học GTVT, Sư Phạm...
+            </p>
+<button class="text-primary text-sm font-bold mt-2 hover:underline">Xem thêm</button>
+</section>
+</main>
+<div class="fixed bottom-0 left-0 w-full bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 z-40 pb-safe">
+<div class="max-w-md mx-auto px-5 py-4 flex items-center gap-4">
+<div class="flex flex-col">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tổng giá thuê</p>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-bold text-primary">4.500.000₫</span>
+<span class="text-xs text-slate-500">/tháng</span>
+</div>
+</div>
+<button class="flex-1 bg-primary hover:bg-primary-dark text-white font-bold h-12 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+                Thuê ngay
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+
+</body></html>

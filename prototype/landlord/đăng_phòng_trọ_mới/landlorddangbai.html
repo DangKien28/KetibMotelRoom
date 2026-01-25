@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đăng phòng trọ mới</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2230",
+                        "border-light": "#cfd7e7",
+                        "border-dark": "#2d3a4f",
+                        "text-main-light": "#0d121b",
+                        "text-main-dark": "#e0e6ed",
+                        "text-sub-light": "#4c669a",
+                        "text-sub-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 pb-2 justify-between border-b border-transparent dark:border-border-dark">
+<button class="flex size-12 shrink-0 items-center justify-center rounded-full active:bg-black/5 dark:active:bg-white/5 transition-colors text-text-main-light dark:text-text-main-dark">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                Đăng tin mới
+            </h2>
+</div>
+<!-- Section: Images -->
+<div class="flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Hình ảnh</h3>
+<div class="px-4">
+<div class="flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-6 py-10 transition-colors hover:border-primary/50 group cursor-pointer">
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<p class="text-text-main-light dark:text-text-main-dark text-base font-bold text-center">Tải ảnh lên</p>
+<p class="text-text-sub-light dark:text-text-sub-dark text-sm font-normal text-center">Tối đa 5 ảnh minh họa</p>
+</div>
+</div>
+<!-- Preview List (Horizontal Scroll) - Simulating uploaded state if needed, currently empty -->
+<!-- <div class="mt-4 flex gap-3 overflow-x-auto pb-2"> ... </div> -->
+</div>
+</div>
+<div class="h-2"></div>
+<!-- Section: Basic Info -->
+<div class="flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Thông tin cơ bản</h3>
+<div class="flex flex-col gap-4 px-4 py-2">
+<!-- Room Name -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Tên phòng trọ <span class="text-red-500">*</span></p>
+<input class="form-input flex w-full resize-none overflow-hidden rounded-xl text-text-main-light dark:text-text-main-dark focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark focus:border-primary h-12 placeholder:text-text-sub-light dark:placeholder:text-text-sub-dark px-4 text-base" placeholder="Ví dụ: Phòng trọ Full nội thất Q1"/>
+</label>
+<!-- Category & Quantity Row -->
+<div class="flex gap-4">
+<label class="flex flex-col flex-1">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Loại phòng</p>
+<div class="relative">
+<select class="form-select w-full appearance-none rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 px-4 pr-10 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20">
+<option>Phòng trọ</option>
+<option>Chung cư mini</option>
+<option>Nhà nguyên căn</option>
+<option>Ở ghép</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-text-sub-light dark:text-text-sub-dark">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</label>
+<label class="flex flex-col w-1/3">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Số lượng</p>
+<input class="form-input w-full rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 px-4 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20" type="number" value="1"/>
+</label>
+</div>
+</div>
+</div>
+<div class="h-2"></div>
+<!-- Section: Location -->
+<div class="flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Vị trí</h3>
+<div class="flex flex-col gap-4 px-4 py-2">
+<div class="grid grid-cols-2 gap-4">
+<!-- City -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Tỉnh/Thành</p>
+<div class="relative">
+<select class="form-select w-full appearance-none rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 px-4 pr-8 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20">
+<option>TP. Hồ Chí Minh</option>
+<option>Hà Nội</option>
+<option>Đà Nẵng</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-text-sub-light dark:text-text-sub-dark">
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</div>
+</div>
+</label>
+<!-- District -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Quận/Huyện</p>
+<div class="relative">
+<select class="form-select w-full appearance-none rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 px-4 pr-8 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20">
+<option>Quận 1</option>
+<option>Quận 3</option>
+<option>Quận Bình Thạnh</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-text-sub-light dark:text-text-sub-dark">
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Address -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Địa chỉ chi tiết <span class="text-red-500">*</span></p>
+<div class="relative">
+<input class="form-input flex w-full rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 pl-10 pr-4 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-text-sub-light dark:placeholder:text-text-sub-dark" placeholder="Số nhà, tên đường..."/>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-text-sub-light dark:text-text-sub-dark">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="h-2"></div>
+<!-- Section: Price & Area -->
+<div class="flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Chi phí &amp; Diện tích</h3>
+<div class="flex flex-col gap-4 px-4 py-2">
+<!-- Price -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Giá cho thuê <span class="text-red-500">*</span></p>
+<div class="relative">
+<input class="form-input flex w-full rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 pl-4 pr-16 text-base text-text-main-light dark:text-text-main-dark font-semibold focus:border-primary focus:ring-2 focus:ring-primary/20" inputmode="numeric" placeholder="0" type="text"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 bg-gray-100 dark:bg-gray-800 rounded-r-xl border-l border-border-light dark:border-border-dark">
+<span class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">VNĐ</span>
+</div>
+</div>
+</label>
+<div class="grid grid-cols-2 gap-4">
+<!-- Area -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Diện tích</p>
+<div class="relative">
+<input class="form-input flex w-full rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 pl-4 pr-12 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="0" type="number"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+<span class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">m²</span>
+</div>
+</div>
+</label>
+<!-- Deposit -->
+<label class="flex flex-col w-full">
+<p class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2">Tiền cọc</p>
+<div class="relative">
+<input class="form-input flex w-full rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 pl-4 pr-12 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20" inputmode="numeric" placeholder="0" type="text"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+<span class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">đ</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<div class="h-2"></div>
+<!-- Section: Amenities -->
+<div class="flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Tiện ích</h3>
+<div class="px-4 py-2">
+<div class="flex flex-wrap gap-2">
+<!-- Amenity Chip: Active -->
+<button class="flex items-center gap-2 rounded-lg border border-primary bg-primary/10 px-3 py-2 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">wifi</span>
+<span class="text-sm font-semibold text-primary">Wifi</span>
+</button>
+<!-- Amenity Chip: Inactive -->
+<button class="flex items-center gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-[18px] text-text-sub-light dark:text-text-sub-dark">ac_unit</span>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Máy lạnh</span>
+</button>
+<!-- Amenity Chip: Inactive -->
+<button class="flex items-center gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-[18px] text-text-sub-light dark:text-text-sub-dark">local_laundry_service</span>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Máy giặt</span>
+</button>
+<!-- Amenity Chip: Inactive -->
+<button class="flex items-center gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-[18px] text-text-sub-light dark:text-text-sub-dark">kitchen</span>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Tủ lạnh</span>
+</button>
+<!-- Amenity Chip: Inactive -->
+<button class="flex items-center gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-[18px] text-text-sub-light dark:text-text-sub-dark">local_parking</span>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Chỗ để xe</span>
+</button>
+<!-- Amenity Chip: Active -->
+<button class="flex items-center gap-2 rounded-lg border border-primary bg-primary/10 px-3 py-2 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+<span class="text-sm font-semibold text-primary">Tự do</span>
+</button>
+<!-- Amenity Chip: Inactive -->
+<button class="flex items-center gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-[18px] text-text-sub-light dark:text-text-sub-dark">security</span>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">An ninh</span>
+</button>
+<!-- Amenity Chip: Inactive -->
+<button class="flex items-center gap-2 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-[18px] text-text-sub-light dark:text-text-sub-dark">wc</span>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">WC riêng</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-2"></div>
+<!-- Section: Description -->
+<div class="flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Mô tả chi tiết</h3>
+<div class="px-4 py-2">
+<label class="flex flex-col w-full">
+<textarea class="form-textarea w-full resize-none rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4 text-base text-text-main-light dark:text-text-main-dark focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-text-sub-light dark:placeholder:text-text-sub-dark min-h-[140px]" placeholder="Mô tả chi tiết về phòng, tiện ích xung quanh, yêu cầu với người thuê..."></textarea>
+</label>
+<p class="text-right text-xs text-text-sub-light dark:text-text-sub-dark mt-2">0/3000 kí tự</p>
+</div>
+</div>
+<!-- Spacer for footer -->
+<div class="h-8"></div>
+</div>
+<!-- Sticky Footer -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface-light dark:bg-surface-dark border-t border-border-light dark:border-border-dark p-4 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] dark:shadow-none safe-area-bottom">
+<button class="flex w-full cursor-pointer items-center justify-center rounded-xl h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30 active:scale-[0.98] transition-all hover:bg-blue-600">
+            Đăng bài
+        </button>
+</div>
+</body></html>

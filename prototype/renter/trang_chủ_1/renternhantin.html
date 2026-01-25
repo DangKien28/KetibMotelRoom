@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tin nhắn - Thuê phòng trọ</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "primary-dark": "#1a4fb0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display selection:bg-primary/30">
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-4 py-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-white dark:ring-gray-700 shadow-sm" data-alt="User profile avatar showing a smiling young person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAajLU1vro0qfn8-rCJkGEt5Uy9N2VIhd9n1aadZjHqW0ft_Y7p0en-vpT0rwEucbV_7TrhruaYs4pKHbKJ1Yo_6167IiNp48Hvk-sfHH_FENlypeEym1MySox9i-QmWMdqR0zsaVCXeGbqnzC4t5zwdZFwMtSsYl2zDHPRyisY1ZnFYYlangw3dbUWbjzWicPt_czNONwGTEBMOFu950uZVoed5GdZk_a8qhF-vJRwPmhHC8FYmXSJJ8EGxNWdp6AKxgGDbfWHNFU");'>
+</div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Xin chào,</span>
+<h2 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Minh Tú</h2>
+</div>
+</div>
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-md mx-auto flex flex-col gap-6 p-4 pb-24 overflow-x-hidden">
+<section class="flex flex-col gap-4 pt-2">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Tin nhắn</h1>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-sm font-medium shadow-sm transition-all outline-none" placeholder="Tìm kiếm tin nhắn..." type="text"/>
+</div>
+</section>
+<section class="flex flex-col gap-3">
+<div class="group flex items-center gap-4 p-4 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 active:scale-[0.98] transition-transform cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center border border-slate-100 dark:border-slate-600" data-alt="Landlord avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjC1iUUJBNo1oqh3M5_OFsZ9qhDFShhyotrz8hUf4yEosszw7_MNimHCD56OMb2wRX5tEcS-_sptHheo9whx0zNbljRGyewvex3Ksc3pZIdefs2oHqid5c--Lkub8uUqWOYkFDwXpeBNCJKWYET4GJu4YU9tErUjulpAMGidEp5vjFYjwi1Rjd_1bEtk2zm8gCRvqMynoKPPTB6-SOxEFShp-zde9TWC0kUa5aAufoFhPWhaubRHBq5_L_S9tiX9nz5ta64nqbN1A")'></div>
+<span class="absolute bottom-0 right-0 size-3.5 bg-green-500 border-2 border-white dark:border-surface-dark rounded-full"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Cô Hạnh - Chủ nhà</h3>
+<span class="text-xs font-bold text-primary shrink-0">10:30</span>
+</div>
+<p class="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">Cháu ơi, cuối tuần này cô qua thu tiền nhà nhé!</p>
+</div>
+<div class="size-2.5 bg-primary rounded-full shrink-0"></div>
+</div>
+<div class="group flex items-center gap-4 p-4 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center border border-slate-100 dark:border-slate-600" data-alt="Landlord avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKhDl_uBuKhrhcrAClhkOZxkYC-to0LRoKWxDyMUzmjbco5Tw-9gSKtFSnDv83gNa11bsPIHqTENjyZQQ6ovnEMUjuFq_8Ph7YkqsiGxm3nfq4_mFjOBtKOrcQQfQb7ImGRd3ACNS-NgiypXiLu39rjJ5CQvPocTxH_S8UnjagmxY3z-KTys8EPXhE4XSGsoRl3lhw_VLh1NIfpl9CaDd04paXBP8h9yU1LFLFuSN4mK8fcWGYC5yfTF0aPXp3sSHDr8rXBC7tBCI")'></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">A. Tuấn Anh</h3>
+<span class="text-xs text-slate-400 shrink-0">Hôm qua</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Ok em, anh đã nhận được cọc rồi nhé, có gì...</p>
+</div>
+</div>
+<div class="group flex items-center gap-4 p-4 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center border border-slate-100 dark:border-slate-600" data-alt="Landlord avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMC3BPbDlae4YFomGKr_KbJ6OqFgx1tCLQbIsZVVkQlJhT1K9dckaCC4mmmup7aDFKNK2sfEvCo8kkzeY1QbOakTbo9TiAQoQWTeXrUQgk-uKxF268vZ_T3MWpHVzIAJxw6S15KTJyFRmUHI0ycjS9ANCrB2jULE4TT7mi5ApNjCjt-wPwiYPf89ms89QaUmjHH2Ww1Y9Bs8LXWdkFRu9EIKXrYAxbyGf8o_06yMn6HFNGgFCJjqR_gM-lsV6u4H1A7bo8FiR2GWg")'></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Chị Lan (Môi giới)</h3>
+<span class="text-xs text-slate-400 shrink-0">Thứ 2</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Em xem phòng lúc mấy giờ được để chị báo chủ nhà mở cửa?</p>
+</div>
+</div>
+<div class="group flex items-center gap-4 p-4 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="relative flex items-center justify-center size-14 rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-[28px]">support_agent</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Hỗ trợ khách hàng</h3>
+<span class="text-xs text-slate-400 shrink-0">01/06</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Chào mừng bạn đến với ứng dụng Thuê phòng trọ!</p>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pb-safe pt-2 px-6 z-40">
+<div class="flex justify-between items-center max-w-md mx-auto h-14 pb-2">
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-16 transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-16 transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Đã lưu</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">chat_bubble</span>
+<span class="text-[10px] font-bold">Tin nhắn</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 w-16 transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Cá nhân</span>
+</button>
+</div>
+</nav>
+<div class="h-20 w-full bg-transparent"></div>
+</body></html>
