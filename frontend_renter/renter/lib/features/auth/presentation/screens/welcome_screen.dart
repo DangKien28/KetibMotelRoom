@@ -1,375 +1,263 @@
+import 'package:flutter/gestures.dart'; // Cần import thư viện này để bắt sự kiện bấm vào chữ
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/ketib_AppColors.dart';
+import '../../../../core/widgets/ketib_button.dart';
+// import 'login_screen.dart';
+import 'register_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
-  // Định nghĩa màu sắc từ HTML config
-  static const Color primaryColor = Color(0xFF2B6CEE);
-  static const Color backgroundColor = Colors.white;
-  static const Color textDark = Color(0xFF101622);
-  static const Color textGrey = Color(0xFF64748B);
-  static const Color backgroundLight = Color(0xFFF6F6F8);
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      backgroundColor: KetibAppcolors.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // --- PHẦN 1: NỘI DUNG CHÍNH ---
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    
+                    // 1. LOGO
+                    Container(
+                      height: size.height * 0.30,
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/images/logo_TK.png',
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // 2. TIÊU ĐỀ
+                    const Text(
+                      "Chào mừng đến với", 
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w800,
+                        color: KetibAppcolors.textMain,
+                        fontFamily: 'Manrope',
+                      ),
+                    ),
+
+                    const Text(
+                      "Ketib Renter", 
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w800,
+                        color: KetibAppcolors.primary,
+                        fontFamily: 'Manrope',
+                      ),
+                    ),
+                    
+                    const SizedBox(height: 12),
+
+                    // 3. MÔ TẢ
+                    const Text(
+                      "Giải pháp tìm phòng trọ và ký hợ đồng điện tử minh bạch, an toàn và nhanh chóng nhất hiện nay.", 
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: KetibAppcolors.textLight,
+                        height: 1.5,
+                        fontFamily: 'Manrope',
+                      ),
+                    ),
+
+                    const SizedBox(height: 32),
+
+                    // 4. TÍNH NĂNG
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildFeatureItem(
+                          icon: Icons.verified_user_outlined,
+                          label: "An toàn\ntuyệt đối", 
+                        ),
+                        _buildFeatureItem(
+                          icon: Icons.search,
+                          label: "Tìm kiếm\nnhanh",
+                        ),
+                        _buildFeatureItem(
+                          icon: Icons.history_edu,
+                          label: "Hợp đồng\nOnline",
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
+
+            // --- PHẦN 2: BUTTONS & ĐIỀU KHOẢN ---
+            Container(
+              padding: const EdgeInsets.all(24.0),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                  top: BorderSide(color: Color(0xFFE2E8F0)),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Nút Đăng ký
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: KetibButton(
+                      text: "Bắt đầu - Đăng ký",
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const RegisterScreen()),
+                        );
+                      },
+                    ),
+                  ),
+                  
+                  const SizedBox(height: 12),
+
+                  // Nút Đăng nhập
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const RegisterScreen()),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color(0xFFF1F5F9),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        "Đăng nhập",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: KetibAppcolors.textMain,
+                          fontFamily: 'Manrope',
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // --- SỬA ĐỔI: RICH TEXT (CHỮ THƯỜNG + LINK) ---
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      // Style mặc định cho cả dòng (chữ thường)
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: KetibAppcolors.textLight, // Màu xám (#6B7280)
+                        fontFamily: 'Manrope',
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: "Bằng việc tiếp tục, bạn đồng ý với ",
+                        ),
+                        TextSpan(
+                          text: "điều khoản dịch vụ",
+                          style: const TextStyle(
+                            color: KetibAppcolors.primary, // Màu xanh (#2B6CEE) để báo hiệu là Link
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline, // Gạch chân (tùy chọn)
+                          ),
+                          // Sự kiện bấm vào chữ
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // Điều hướng đến màn hình Điều khoản (được tạo tạm ở dưới)
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const TermsOfServiceScreen(),
+                                ),
+                              );
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFeatureItem({required IconData icon, required String label}) {
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        decoration: BoxDecoration(
+          color: KetibAppcolors.primary.withOpacity(0.05),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: KetibAppcolors.primary.withOpacity(0.1),
+          ),
+        ),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              color: KetibAppcolors.primary,
+              size: 28,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: KetibAppcolors.textMain,
+                height: 1.2,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// --- MÀN HÌNH TRỐNG: ĐIỀU KHOẢN DỊCH VỤ (Tạo tạm để test link) ---
+class TermsOfServiceScreen extends StatelessWidget {
+  const TermsOfServiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Sử dụng SafeArea để tránh tai thỏ/camera
     return Scaffold(
-      backgroundColor: backgroundColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // --- 1. Top Bar ---
-                _buildTopBar(),
-                
-                const SizedBox(height: 24),
-
-                // --- 2. Hero Image Section ---
-                _buildHeroSection(context),
-
-                const SizedBox(height: 32),
-
-                // --- 3. Headline Text ---
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    style: GoogleFonts.manrope(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w800,
-                      color: textDark,
-                      height: 1.2,
-                    ),
-                    children: const [
-                      TextSpan(text: 'Chào mừng đến với\n'),
-                      TextSpan(
-                        text: 'Renter',
-                        style: TextStyle(color: primaryColor),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                // --- 4. Subtitle Text ---
-                Text(
-                  'Giải pháp tìm phòng trọ và ký hợp đồng điện tử minh bạch, an toàn và nhanh chóng nhất hiện nay.',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.manrope(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: textGrey,
-                    height: 1.5,
-                  ),
-                ),
-
-                const SizedBox(height: 32),
-
-                // --- 5. Features Grid ---
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildFeatureCard(
-                        icon: Icons.manage_search_rounded, // search_check
-                        label: 'Tìm kiếm nhanh',
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: _buildFeatureCard(
-                        icon: Icons.edit_document, // history_edu
-                        label: 'Hợp đồng Online',
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 40),
-
-                // --- 6. Action Buttons ---
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // TODO: Xử lý sự kiện đăng ký
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 4,
-                      shadowColor: primaryColor.withOpacity(0.25),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Bắt đầu - Đăng ký',
-                          style: GoogleFonts.manrope(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        const Icon(Icons.arrow_forward_rounded, size: 20),
-                      ],
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 12),
-
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: TextButton(
-                    onPressed: () {
-                      // TODO: Xử lý sự kiện đăng nhập
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: backgroundLight,
-                      foregroundColor: textDark,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: Text(
-                      'Đăng nhập',
-                      style: GoogleFonts.manrope(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                // --- 7. Terms Link ---
-                GestureDetector(
-                  onTap: () {
-                    // TODO: Mở điều khoản
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      style: GoogleFonts.manrope(
-                        fontSize: 12,
-                        color: textGrey.withOpacity(0.7),
-                        fontWeight: FontWeight.w500,
-                      ),
-                      children: const [
-                        TextSpan(text: 'Bằng việc tiếp tục, bạn đồng ý với '),
-                        TextSpan(
-                          text: 'Điều khoản dịch vụ',
-                          style: TextStyle(
-                            color: primaryColor,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                
-                const SizedBox(height: 10),
-              ],
-            ),
-          ),
-        ),
+      appBar: AppBar(
+        title: const Text("Điều khoản dịch vụ"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
       ),
-    );
-  }
-
-  // Widget: Top Bar (Logo + Tên App)
-  Widget _buildTopBar() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        // Icon bên trái
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: primaryColor.withOpacity(0.1),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.apartment_rounded,
-              color: primaryColor,
-              size: 24,
-            ),
-          ),
-        ),
-        // Chữ ở giữa
-        Text(
-          'Renter',
-          style: GoogleFonts.manrope(
-            fontSize: 20,
-            fontWeight: FontWeight.w800,
-            color: textDark,
-          ),
-        ),
-      ],
-    );
-  }
-
-  // Widget: Hero Section (Ảnh lớn + Overlay text)
-  Widget _buildHeroSection(BuildContext context) {
-    return Container(
-      height: 400,
-      width: double.infinity,
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          // 1. Ảnh nền (Dùng NetworkImage làm ví dụ, bạn có thể thay bằng AssetImage)
-          Image.network(
-            'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
-            fit: BoxFit.cover,
-            loadingBuilder: (context, child, loadingProgress) {
-              if (loadingProgress == null) return child;
-              return Container(color: Colors.grey[200]);
-            },
-            errorBuilder: (context, error, stackTrace) => Container(
-              color: Colors.grey[300],
-              child: const Center(child: Icon(Icons.broken_image)),
-            ),
-          ),
-
-          // 2. Lớp phủ Gradient đen mờ dần từ dưới lên
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.0),
-                  Colors.black.withOpacity(0.8),
-                ],
-                stops: const [0.0, 0.4, 1.0],
-              ),
-            ),
-          ),
-
-          // 3. Nội dung trên ảnh
-          Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Badge "An tâm tuyệt đối"
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.verified_user_rounded, color: Colors.white, size: 14),
-                      const SizedBox(width: 6),
-                      Text(
-                        'AN TÂM TUYỆT ĐỐI',
-                        style: GoogleFonts.manrope(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 12),
-                
-                // Headline trên ảnh
-                Text(
-                  'Tìm phòng ưng ý,\nKý kết trong tích tắc',
-                  style: GoogleFonts.manrope(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    height: 1.2,
-                  ),
-                ),
-                
-                const SizedBox(height: 24),
-                
-                // Pagination Dots
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildDot(isActive: true),
-                    _buildDot(isActive: false),
-                    _buildDot(isActive: false),
-                    _buildDot(isActive: false),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Helper tạo Pagination Dot
-  Widget _buildDot({required bool isActive}) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      width: isActive ? 24 : 6,
-      height: 6,
-      decoration: BoxDecoration(
-        color: isActive ? primaryColor : Colors.white.withOpacity(0.4),
-        borderRadius: BorderRadius.circular(3),
-      ),
-    );
-  }
-
-  // Helper tạo Feature Card (ô vuông nhỏ)
-  Widget _buildFeatureCard({required IconData icon, required String label}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      decoration: BoxDecoration(
-        color: primaryColor.withOpacity(0.05),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: primaryColor.withOpacity(0.1)),
-      ),
-      child: Column(
-        children: [
-          Icon(icon, color: primaryColor, size: 32),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            style: GoogleFonts.manrope(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: textDark,
-            ),
-          ),
-        ],
+      body: const Center(
+        child: Text("Nội dung điều khoản sẽ hiển thị ở đây"),
       ),
     );
   }
