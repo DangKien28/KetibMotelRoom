@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart'; // Cần import thư viện này để bắt sự kiện bấm vào chữ
 import 'package:flutter/material.dart';
+import 'package:renter/features/auth/presentation/screens/login_screen.dart';
 import '../../../../core/constants/ketib_AppColors.dart';
 import '../../../../core/widgets/ketib_button.dart';
 // import 'login_screen.dart';
@@ -138,7 +139,7 @@ class WelcomeScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => const RegisterScreen()),
+                          MaterialPageRoute(builder: (_) => const LoginScreen()),
                         );
                       },
                       style: TextButton.styleFrom(
