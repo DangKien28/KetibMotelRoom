@@ -13,7 +13,6 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
   @override
   Future<dynamic> postRegister(RegisterRequestModel request) async {
     try {
-      // Endpoint giữ nguyên là /auth/register vì Server quy định
       final response = await dioClient.post(
         '/auth/register', 
         data: request.toJson(),
