@@ -18,12 +18,12 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   {
     context.read<LoginBloc>().add(
         LoginSubmitted(
-            phoneNumber: _emailController.text.trim(),
+            phoneNumber: _phoneController.text.trim(),
             password: _passwordController.text,
         ),
     );
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 KetibTextField(
                   label: "Email",
                   hintText: "Nhập email của bạn",
-                  controller: _emailController,
+                  controller: _phoneController,
                   icon: Icons.email_outlined,
                   isIconLeft: true, // Icon bên trái theo yêu cầu Login
                   keyboardType: TextInputType.emailAddress,
