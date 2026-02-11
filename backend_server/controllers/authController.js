@@ -67,12 +67,12 @@ exports.register = async (req, res)=> {
 //2. Login
 exports.login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { phone_number, password } = req.body;
 
         // 1. Tìm User theo email
-        const user = await User.findOne({ where: { email: email } });
+        const user = await User.findOne({ where: { phone_number: phone_number } });
         if (!user) {
-            return res.status(404).json({ message: "Email không tồn tại" });
+            return res.status(404).json({ message: "Số điện thoại không tồn tại" });
         }
 
         // 2. SO SÁNH MẬT KHẨU BẰNG BCRYPT
