@@ -1,202 +1,162 @@
 import 'package:flutter/material.dart';
 
-class SavedRoomsScreen extends StatefulWidget {
+class SavedRoomsScreen extends StatelessWidget {
   const SavedRoomsScreen({super.key});
-
-  @override
-  State<SavedRoomsScreen> createState() => _SavedRoomsScreenState();
-}
-
-class _SavedRoomsScreenState extends State<SavedRoomsScreen> {
-  // --- COLOR CONSTANTS (Theo HTML/Design) ---
-  static const Color kPrimaryColor = Color(0xFF2B6CEE);
-  static const Color kBackgroundColor = Color(0xFFF6F6F8);
-  static const Color kSurfaceColor = Colors.white;
-  static const Color kTextPrimary = Color(0xFF0F172A); // Slate 900
-  static const Color kTextSecondary = Color(0xFF64748B); // Slate 500
-  static const Color kDangerColor = Color(0xFFEF4444); // Red 500
-
-  // --- MOCK STRUCTURE (Khung chứa dữ liệu) ---
-  // Dùng để tạo vòng lặp hiển thị danh sách
-  final List<Map<String, dynamic>> _savedRooms = [
-    {'id': 1}, 
-    {'id': 2}, 
-    {'id': 3},
-  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: const Color(0xFFF6F6F8), // background-light
       appBar: _buildAppBar(),
-      body: Column(
-        children: [
-          // Sub-header (Số lượng & Bộ lọc)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "${_savedRooms.length} phòng đã lưu", // Placeholder count
-                  style: const TextStyle(
-                    color: kTextSecondary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    children: const [
-                      Text(
-                        "Mới nhất",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Icon(Icons.sort, color: kPrimaryColor, size: 20),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          
-          // List Cards
-          Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: _savedRooms.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                return _buildRoomCard();
-              },
-            ),
-          ),
-        ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildHeaderSection(),
+            const SizedBox(height: 20),
+            _buildSavedList(),
+          ],
+        ),
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 
-  // 1. App Bar
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: kBackgroundColor,
-      elevation: 0,
+      backgroundColor: Colors.white.withOpacity(0.9),
+      elevation: 0.5,
+      centerTitle: false,
       title: const Text(
         "Phòng đã lưu",
         style: TextStyle(
-          color: kTextPrimary,
-          fontSize: 24,
-          fontWeight: FontWeight.w800,
-          fontFamily: 'Plus Jakarta Sans',
+          color: Color(0xFF0D121B),
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
       ),
-      centerTitle: false,
       actions: [
-        // Notification Icon
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.notifications_none, color: kTextPrimary, size: 28),
-              onPressed: () {},
-            ),
-            Positioned(
-              top: 10,
-              right: 10,
-              child: Container(
-                width: 10,
-                height: 10,
-                decoration: const BoxDecoration(
-                  color: kDangerColor,
-                  shape: BoxShape.circle,
-                  border: Border.fromBorderSide(BorderSide(color: kBackgroundColor, width: 2)),
-                ),
-              ),
-            )
-          ],
+        IconButton(
+          icon: const Icon(Icons.notifications_outlined, color: Colors.black),
+          onPressed: () {},
         ),
-        // Avatar
-        Padding(
-          padding: const EdgeInsets.only(right: 16.0, left: 8.0),
-          child: Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: Colors.orange.shade100,
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            child: const Icon(Icons.person, color: Colors.orange),
-            // TODO: Load User Avatar Image
+        const Padding(
+          padding: EdgeInsets.only(right: 16.0),
+          child: CircleAvatar(
+            radius: 18,
+            backgroundImage: NetworkImage("https://lh3.googleusercontent.com/aida-public/AB6AXuAajLU1vro0qfn8-rCJkGEt5Uy9N2VIhd9n1aadZjHqW0ft_Y7p0en-vpT0rwEucbV_7TrhruaYs4pKHbKJ1Yo_6167IiNp48Hvk-sfHH_FENlypeEym1MySox9i-QmWMdqR0zsaVCXeGbqnzC4t5zwdZFwMtSsYl2zDHPRyisY1ZnFYYlangw3dbUWbjzWicPt_czNONwGTEBMOFu950uZVoed5GdZk_a8qhF-vJRwPmhHC8FYmXSJJ8EGxNWdp6AKxgGDbfWHNFU"), // avatar
           ),
         ),
       ],
     );
   }
 
-  // 2. Room Card Component
-  Widget _buildRoomCard() {
+  Widget _buildHeaderSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          "3 phòng đã lưu", // Text từ file HTML
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Text(
+            "Mới nhất",
+            style: TextStyle(color: Color(0xFF2B6CEE), fontWeight: FontWeight.bold),
+          ),
+          label: const Icon(Icons.sort, color: Color(0xFF2B6CEE), size: 18),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSavedList() {
+    // Dữ liệu mẫu dựa trên renterphongtrodaluu.html
+    final List<Map<String, String>> savedRooms = [
+      {
+        "title": "Căn hộ Studio Full nội thất",
+        "price": "4.5 triệu/tháng",
+        "location": "Ngõ 165 Cầu Giấy, Quan Hoa",
+        "owner": "A. Tuấn Anh",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDk6qSkfrcKwV537DEHKjUDv7CW5X8ZQrzpu6crELxu2DVoHIhKKY52mVy3OQ9_tPpOog5PezJ2WvZg_iAU82Jrqg_eYXEZCQ48QKj3hL9yn1T7N6_Cec0cUCCjV00_kCl1bJ0EI6LjKqR0ld4GH1r__BMx0AZ-7YnsCXOObsKe-kJtYLGXzmHhgkX3EqmJl_6krV91qruNPgCl5V8Sk_R4HhQdVjL007v0cBk_mkVUiudeFN9VictOMqjdr1JW61walV9N-3XAUBM"
+      },
+      {
+        "title": "Phòng trọ khép kín gần ĐH Giao Thông",
+        "price": "3.2 triệu/tháng",
+        "location": "Số 10, Ngách 2, Láng Hạ, Đống Đa",
+        "owner": "Chị Lan",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC0XWFl0FASC2WPI_c9GI4tm0BAtXkydilMbvUMfuCLx5pQkbhAQRyuPhCSpTpo6FKCSp19hSx3RTES-OXTVXt2N0Plu3uQCrSEjPtFqSqtmthvd33bvhF4yWWjncY8z8WXwgRCw_Gsgsia0UP-167HxMtTzsZNtPPoJtbj_4KKRVbVcK0LwsyxKTf2X7W0Ba_pUjHzzlZVx9XqG-Ohe8Gy9ko0dHDjSr15_VLfwDHlXsIIQ7xNHBCrfpkrdXdpZAFSC6D-b4D6NlQ"
+      },
+      {
+        "title": "Chung cư mini cao cấp - Đống Đa",
+        "price": "5.0 triệu/tháng",
+        "location": "123 Đường Láng, Phường Láng Thượng",
+        "owner": "Cô Hạnh",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuB2lOh0PysHvIPu2HGuKHw0DS6b1CHfOtt1rXVOgIUT_sFfSleKR4eHlZaZhVZYEwN_sGrhEcYHWdEnOMn7EOHUx1oqP-2xQEJhnSEtat3eKq-aM9BHZ4JuAzdEzLkznYMaEhKTDOarFmCv98PhBSUshxGiDyJbC6gSbg3a3PMsF5M7ua-B-q-Bxr-mygXI5mlh8BkvxgEhSO-Z9bqSUynS3SpH1qTiQmgsB03lmidq7jG6aqR1-hbAoXVcTcVLQQVVUWNtOd-njM8"
+      },
+    ];
+
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: savedRooms.length,
+      separatorBuilder: (_, __) => const SizedBox(height: 16),
+      itemBuilder: (context, index) {
+        final room = savedRooms[index];
+        return _buildSavedRoomCard(
+          room['title']!,
+          room['price']!,
+          room['location']!,
+          room['owner']!,
+          room['image']!,
+        );
+      },
+    );
+  }
+
+  Widget _buildSavedRoomCard(String title, String price, String location, String owner, String imageUrl) {
     return Container(
       decoration: BoxDecoration(
-        color: kSurfaceColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey.shade100),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.03),
-            blurRadius: 8,
+            blurRadius: 10,
             offset: const Offset(0, 4),
-          ),
+          )
         ],
-        border: Border.all(color: Colors.grey.shade100),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Top: Image & Overlay Tags
           Stack(
             children: [
-              // Image Placeholder
-              Container(
-                height: 180,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                child: Image.network(
+                  imageUrl,
+                  height: 180,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-                alignment: Alignment.center,
-                child: const Icon(Icons.image, size: 50, color: Colors.white54),
-                // TODO: Replace with Image.network(url)
               ),
-              
-              // Favorite Button (Top Right)
+              // Nút Favorite luôn ở trạng thái Active (màu đỏ)
               Positioned(
                 top: 12,
                 right: 12,
-                child: Container(
-                  width: 36,
-                  height: 36,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 4,
-                      )
-                    ],
-                  ),
-                  child: const Icon(Icons.favorite, color: kDangerColor, size: 20),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white.withOpacity(0.9),
+                  radius: 18,
+                  child: const Icon(Icons.favorite, size: 20, color: Colors.red),
                 ),
               ),
-
-              // Price Tag (Bottom Left)
+              // Badge giá tiền
               Positioned(
                 bottom: 12,
                 left: 12,
@@ -207,15 +167,15 @@ class _SavedRoomsScreenState extends State<SavedRoomsScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
-                    children: const [
-                      Icon(Icons.payments, color: Colors.white, size: 14),
-                      SizedBox(width: 4),
+                    children: [
+                      const Icon(Icons.payments, color: Colors.white, size: 14),
+                      const SizedBox(width: 4),
                       Text(
-                        "Giá thuê mẫu/tháng", // Placeholder Price
-                        style: TextStyle(
+                        price,
+                        style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 12,
                           fontWeight: FontWeight.bold,
+                          fontSize: 12,
                         ),
                       ),
                     ],
@@ -224,138 +184,70 @@ class _SavedRoomsScreenState extends State<SavedRoomsScreen> {
               ),
             ],
           ),
-
-          // Bottom: Info
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Title
-                const Text(
-                  "Tiêu đề phòng trọ mẫu hiển thị ở đây", // Placeholder Title
-                  style: TextStyle(
-                    color: kTextPrimary,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Plus Jakarta Sans',
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                Text(
+                  title,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 const SizedBox(height: 8),
-                
-                // Address
                 Row(
-                  children: const [
-                    Icon(Icons.location_on, size: 16, color: kTextSecondary),
-                    SizedBox(width: 4),
+                  children: [
+                    const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: Text(
-                        "Địa chỉ chi tiết mẫu...", // Placeholder Address
-                        style: TextStyle(color: kTextSecondary, fontSize: 13),
-                        maxLines: 1,
+                        location,
+                        style: const TextStyle(color: Colors.grey, fontSize: 13),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
                 ),
-                
                 const SizedBox(height: 12),
-                const Divider(height: 1, color: Color(0xFFE2E8F0)), // Slate 200
+                const Divider(height: 1),
                 const SizedBox(height: 12),
-
-                // Landlord & Action
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Landlord Info
                     Row(
                       children: [
-                        Container(
-                          width: 24,
-                          height: 24,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
-                            shape: BoxShape.circle,
-                          ),
-                          // TODO: Landlord Avatar
+                        const CircleAvatar(
+                          radius: 12,
+                          backgroundColor: Color(0xFFE2E8F0),
+                          child: Icon(Icons.person, size: 14, color: Colors.grey),
                         ),
                         const SizedBox(width: 8),
-                        const Text(
-                          "Tên chủ trọ", // Placeholder Landlord Name
-                          style: TextStyle(
-                            color: kTextPrimary,
-                            fontSize: 12,
+                        Text(
+                          owner,
+                          style: const TextStyle(
+                            fontSize: 13,
                             fontWeight: FontWeight.w600,
+                            color: Color(0xFF4A5568),
                           ),
                         ),
                       ],
                     ),
-                    
-                    // Detail Link
-                    InkWell(
-                      onTap: () {
-                        // Navigate to Detail Screen
-                      },
+                    TextButton(
+                      onPressed: () {},
                       child: const Text(
                         "Chi tiết",
                         style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 13,
+                          color: Color(0xFF2B6CEE),
                           fontWeight: FontWeight.bold,
+                          fontSize: 14,
                         ),
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
-          ),
+          )
         ],
-      ),
-    );
-  }
-
-  // 3. Bottom Nav (Visual only - Matching design)
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border(top: BorderSide(color: Colors.grey.shade200)),
-      ),
-      child: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 1, // Đặt cứng là 1 (Đã lưu)
-        selectedItemColor: kPrimaryColor,
-        unselectedItemColor: Colors.grey.shade400,
-        selectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
-        unselectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: "Trang chủ",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite), // Filled icon for active state
-            activeIcon: Icon(Icons.favorite),
-            label: "Đã lưu",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            activeIcon: Icon(Icons.chat_bubble),
-            label: "Tin nhắn",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: "Cá nhân",
-          ),
-        ],
-        onTap: (index) {},
       ),
     );
   }

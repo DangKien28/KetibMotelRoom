@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:renter/features/main/presentation/screens/main_screen.dart';
 
 // 1. Import Config & Core
 import 'config/theme/app_theme.dart';
@@ -13,7 +14,8 @@ import 'features/auth/domain/usecases/register_usecase.dart';
 import 'features/auth/presentation/bloc/register_bloc.dart';
 
 // 3. Import Screens
-import 'features/auth/presentation/screens/welcome_screen.dart';
+// import 'features/auth/presentation/screens/welcome_screen.dart';
+// import 'features/home/presentation/screens/home_screen.dart';
 
 void main() {
   // Đảm bảo Flutter Binding được khởi tạo trước khi chạy App
@@ -62,7 +64,7 @@ class MyApp extends StatelessWidget {
           
           // Màn hình đầu tiên là WelcomeScreen (Logo + Nút Đăng nhập/Đăng ký)
           //
-          home: const WelcomeScreen(),
+          home: const MainScreen(),
         ),
       ),
     );

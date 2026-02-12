@@ -1,182 +1,104 @@
 import 'package:flutter/material.dart';
 
-class ChatDetailScreen extends StatefulWidget {
-  const ChatDetailScreen({super.key});
+class DetailMessageScreen extends StatefulWidget {
+  // Nhận thông tin người chat từ màn hình danh sách
+  final String userName;
+  final String avatarUrl;
+
+  const DetailMessageScreen({
+    super.key,
+    required this.userName,
+    required this.avatarUrl,
+  });
 
   @override
-  State<ChatDetailScreen> createState() => _ChatDetailScreenState();
+  State<DetailMessageScreen> createState() => _DetailMessageScreenState();
 }
 
-class _ChatDetailScreenState extends State<ChatDetailScreen> {
-  // --- COLOR CONSTANTS (Based on HTML/Image) ---
-  static const Color kPrimaryColor = Color(0xFF2B6CEE);
-  static const Color kBackgroundColor = Color(0xFFF6F6F8);
-  static const Color kSurfaceColor = Colors.white;
-  static const Color kTextPrimary = Color(0xFF0F172A);
-  static const Color kTextSecondary = Color(0xFF64748B);
-  static const Color kInputBgColor = Color(0xFFF1F5F9); // Slate 100
+class _DetailMessageScreenState extends State<DetailMessageScreen> {
+  final TextEditingController _messageController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
-  // --- MOCK STRUCTURE (Cấu trúc khung, không chứa dữ liệu thật) ---
-  // isMe: true -> Tin nhắn của mình (Bên phải, màu xanh)
-  // isMe: false -> Tin nhắn đối phương (Bên trái, màu trắng)
-  final List<Map<String, dynamic>> _messages = [
-    {
-      'isMe': true, 
-      'message': 'Nội dung tin nhắn mẫu hiển thị ở đây (dòng 1)...', 
-      'time': '10:23'
-    },
-    {
-      'isMe': false, 
-      'message': 'Nội dung phản hồi mẫu từ phía người dùng kia.', 
-      'time': '10:24'
-    },
-    {
-      'isMe': true, 
-      'message': 'Nội dung tin nhắn dài hơn để kiểm tra khả năng xuống dòng của khung chat xem có bị vỡ giao diện không.', 
-      'time': '10:25'
-    },
-    {
-      'isMe': false, 
-      'message': 'Câu trả lời ngắn.', 
-      'time': '10:26'
-    },
-    {
-      'isMe': true, 
-      'message': 'Chốt phương án.', 
-      'time': '10:28'
-    },
-    {
-      'isMe': false, 
-      'message': 'Xác nhận đồng ý với yêu cầu.', 
-      'time': '10:30'
-    },
+  // Danh sách tin nhắn mẫu (Placeholder) để demo cấu trúc hiển thị
+  // Trong thực tế, đây sẽ là dữ liệu lấy từ API hoặc CSDL
+  final List<Map<String, dynamic>> _dummyMessages = [
+    {"isMe": false, "text": "Tin nhắn mẫu từ người gửi..."},
+    {"isMe": true, "text": "Tin nhắn mẫu từ phía bạn (người dùng)..."},
+    {"isMe": false, "text": "Nội dung tin nhắn dài hơn để kiểm tra khả năng xuống dòng của giao diện chat xem có bị vỡ layout không."},
   ];
 
-  final TextEditingController _controller = TextEditingController();
+  @override
+  void dispose() {
+    _messageController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: const Color(0xFFF6F6F8), // background-light
       appBar: _buildAppBar(),
       body: Column(
         children: [
-          // Time Stamp Header (Ngày tháng)
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            alignment: Alignment.center,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Text(
-                "Hôm nay, 10:23", // Time Placeholder
-                style: TextStyle(color: kTextSecondary, fontSize: 11, fontWeight: FontWeight.w500),
-              ),
-            ),
-          ),
-          
-          // Chat List
+          // Khu vực hiển thị danh sách tin nhắn
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              physics: const BouncingScrollPhysics(),
-              itemCount: _messages.length,
+              controller: _scrollController,
+              padding: const EdgeInsets.all(16),
+              itemCount: _dummyMessages.length,
               itemBuilder: (context, index) {
-                final msg = _messages[index];
+                final msg = _dummyMessages[index];
                 return _buildMessageBubble(
+                  text: msg['text'],
                   isMe: msg['isMe'],
-                  message: msg['message'],
-                  time: msg['time'],
-                  showAvatar: !msg['isMe'], // Chỉ hiện avatar cho tin nhắn người khác
+                  // Chỉ hiện avatar nếu là tin nhắn người khác
+                  avatarUrl: msg['isMe'] ? null : widget.avatarUrl,
                 );
               },
             ),
           ),
-          
-          // Read Receipt Label
-          Padding(
-            padding: const EdgeInsets.only(right: 16, bottom: 8),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                "Đã xem",
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-
-          // Input Area
+          // Khu vực nhập tin nhắn
           _buildInputArea(),
         ],
       ),
     );
   }
 
-  // 1. App Bar
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: kSurfaceColor,
+      backgroundColor: Colors.white,
       elevation: 0.5,
+      titleSpacing: 0,
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_new, size: 20, color: kTextSecondary),
+        icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
         onPressed: () => Navigator.pop(context),
       ),
-      titleSpacing: 0,
       title: Row(
         children: [
-          // Avatar Placeholder
-          Stack(
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey.shade100),
-                ),
-                child: const Icon(Icons.person, color: Colors.white),
-                // TODO: Load Network Image here
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  width: 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: kSurfaceColor, width: 1.5),
-                  ),
-                ),
-              )
-            ],
+          CircleAvatar(
+            radius: 18,
+            backgroundImage: NetworkImage(widget.avatarUrl),
+            backgroundColor: Colors.grey.shade300,
           ),
-          const SizedBox(width: 10),
-          // Name & Status Info Frame
+          const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Tên người dùng", // Name Placeholder
-                style: TextStyle(
-                  color: kTextPrimary,
+                widget.userName,
+                style: const TextStyle(
+                  color: Color(0xFF0D121B),
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Plus Jakarta Sans',
                 ),
               ),
-              Text(
-                "Trạng thái hoạt động", // Status Placeholder
-                style: TextStyle(color: kTextSecondary, fontSize: 11),
+              const Text(
+                "Đang hoạt động", // Hoặc trạng thái tùy chỉnh
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 12,
+                ),
               ),
             ],
           ),
@@ -184,87 +106,65 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.call, color: kPrimaryColor),
+          icon: const Icon(Icons.phone, color: Color(0xFF2B6CEE)),
           onPressed: () {},
         ),
-        const SizedBox(width: 8),
+        IconButton(
+          icon: const Icon(Icons.more_vert, color: Colors.grey),
+          onPressed: () {},
+        ),
       ],
     );
   }
 
-  // 2. Chat Bubble Widget
+  // Widget hiển thị bong bóng tin nhắn
   Widget _buildMessageBubble({
+    required String text,
     required bool isMe,
-    required String message,
-    required String time,
-    bool showAvatar = false,
+    String? avatarUrl,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Row(
         mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end, // Align avatar to bottom
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // Avatar for Other User
           if (!isMe) ...[
-            Container(
-              width: 28,
-              height: 28,
-              margin: const EdgeInsets.only(right: 8, bottom: 4), // Căn chỉnh nhẹ với bubble
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                shape: BoxShape.circle,
-              ),
-              // TODO: Avatar Image
+            CircleAvatar(
+              radius: 14,
+              backgroundImage: NetworkImage(avatarUrl ?? ""),
+              backgroundColor: Colors.grey.shade300,
             ),
+            const SizedBox(width: 8),
           ],
-
-          // Bubble Content
-          Flexible( // Cho phép xuống dòng nếu text quá dài
-            child: Column(
-              crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: isMe ? kPrimaryColor : kSurfaceColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(18),
-                      topRight: const Radius.circular(18),
-                      bottomLeft: isMe ? const Radius.circular(18) : const Radius.circular(4), // Góc nhọn bên trái nếu là người khác
-                      bottomRight: isMe ? const Radius.circular(4) : const Radius.circular(18), // Góc nhọn bên phải nếu là mình
-                    ),
-                    boxShadow: !isMe ? [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      )
-                    ] : [],
-                  ),
-                  child: Text(
-                    message,
-                    style: TextStyle(
-                      color: isMe ? Colors.white : kTextPrimary,
-                      fontSize: 14,
-                      height: 1.4,
-                    ),
-                  ),
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: isMe ? const Color(0xFF2B6CEE) : Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(16),
+                  topRight: const Radius.circular(16),
+                  bottomLeft: isMe ? const Radius.circular(16) : const Radius.circular(4),
+                  bottomRight: isMe ? const Radius.circular(4) : const Radius.circular(16),
                 ),
-                const SizedBox(height: 4),
-                // Time Text
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Text(
-                    time,
-                    style: TextStyle(
-                      color: Colors.grey.shade400,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                boxShadow: isMe
+                    ? null
+                    : [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        )
+                      ],
+              ),
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: isMe ? Colors.white : const Color(0xFF0D121B),
+                  fontSize: 15,
                 ),
-              ],
+              ),
             ),
           ),
         ],
@@ -272,80 +172,74 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     );
   }
 
-  // 3. Input Area
+  // Widget thanh nhập liệu
   Widget _buildInputArea() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10).copyWith(
-        bottom: MediaQuery.of(context).padding.bottom + 10 // Safe Area Bottom
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: kSurfaceColor,
+        color: Colors.white,
         border: Border(top: BorderSide(color: Colors.grey.shade200)),
       ),
-      child: Row(
-        children: [
-          // Plus Button
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.add_circle_outline, color: kTextSecondary),
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-          ),
-          const SizedBox(width: 12),
-          
-          // Text Field Container
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              height: 44,
-              decoration: BoxDecoration(
-                color: kInputBgColor,
-                borderRadius: BorderRadius.circular(22),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: const InputDecoration(
-                        hintText: "Nhập tin nhắn...",
-                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                        border: InputBorder.none,
-                        isDense: true,
-                        contentPadding: EdgeInsets.zero,
-                      ),
-                      style: const TextStyle(fontSize: 14, color: kTextPrimary),
-                    ),
-                  ),
-                  const Icon(Icons.sentiment_satisfied_alt, color: Colors.grey, size: 20),
-                ],
-              ),
-            ),
-          ),
-          
-          const SizedBox(width: 12),
-          
-          // Send Button
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: kPrimaryColor.withOpacity(0.3),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                )
-              ],
-            ),
-            child: IconButton(
+      child: SafeArea(
+        child: Row(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.add_photo_alternate, color: Colors.grey),
               onPressed: () {},
-              icon: const Icon(Icons.send, color: Colors.white, size: 18),
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(),
             ),
-          ),
-        ],
+            const SizedBox(width: 12),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF6F6F8),
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: TextField(
+                  controller: _messageController,
+                  decoration: const InputDecoration(
+                    hintText: "Nhập tin nhắn...",
+                    border: InputBorder.none,
+                    isDense: true,
+                    contentPadding: EdgeInsets.symmetric(vertical: 10),
+                  ),
+                  minLines: 1,
+                  maxLines: 4,
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            CircleAvatar(
+              radius: 20,
+              backgroundColor: const Color(0xFF2B6CEE),
+              child: IconButton(
+                icon: const Icon(Icons.send, color: Colors.white, size: 18),
+                onPressed: () {
+                  // Xử lý gửi tin nhắn
+                  if (_messageController.text.isNotEmpty) {
+                    setState(() {
+                      _dummyMessages.add({
+                        "isMe": true,
+                        "text": _messageController.text,
+                      });
+                      _messageController.clear();
+                    });
+                    // Cuộn xuống dưới cùng
+                    Future.delayed(const Duration(milliseconds: 100), () {
+                      _scrollController.animateTo(
+                        _scrollController.position.maxScrollExtent,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOut,
+                      );
+                    });
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

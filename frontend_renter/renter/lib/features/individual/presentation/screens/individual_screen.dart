@@ -1,159 +1,155 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math; // Dùng để vẽ viền đứt đoạn (dashed border)
+import 'package:renter/features/individual/presentation/screens/current_room_screen.dart';
+import 'package:renter/features/individual/presentation/screens/rental_history_screen.dart';
 
-class ProfileScreen extends StatefulWidget {
+// Import các màn hình chi tiết
+import 'edit_profile_screen.dart';
+
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
-
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  // --- COLOR CONSTANTS (Theo HTML/Tailwind config) ---
-  static const Color kPrimaryColor = Color(0xFF2B6CEE);
-  static const Color kBackgroundColor = Color(0xFFF6F6F8);
-  static const Color kSurfaceColor = Colors.white;
-  static const Color kTextPrimary = Color(0xFF0F172A); // Slate 900
-  static const Color kTextSecondary = Color(0xFF64748B); // Slate 500
-  static const Color kDangerColor = Color(0xFFEF4444); // Red 500
-  static const Color kBorderColor = Color(0xFFF1F5F9); // Gray 100
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: const Color(0xFFF6F6F8), // background-light
       appBar: _buildAppBar(),
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: 100), // Padding cho bottom nav
+        padding: const EdgeInsets.only(bottom: 24),
         child: Column(
           children: [
             _buildProfileHeader(),
             const SizedBox(height: 24),
-            _buildMenuSection(
+            _buildMenuGroup(
               title: "TÀI KHOẢN",
-              children: [
+              items: [
+                // 1. Điều hướng sang Chỉnh sửa thông tin cá nhân
                 _buildMenuItem(
+                  context: context,
                   icon: Icons.person,
-                  iconColor: kPrimaryColor,
-                  iconBg: const Color(0xFFEFF6FF), // Blue 50
+                  iconColor: const Color(0xFF2B6CEE),
+                  iconBgColor: const Color(0xFFEAF2FF),
                   title: "Thông tin cá nhân",
                   subtitle: "Chỉnh sửa hồ sơ của bạn",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EditProfileScreen(),
+                      ),
+                    );
+                  },
                 ),
-                _buildDivider(),
+                // 2. Điều hướng sang Thông tin phòng trọ
                 _buildMenuItem(
+                  context: context,
                   icon: Icons.home,
-                  iconColor: const Color(0xFF6366F1), // Indigo 500
-                  iconBg: const Color(0xFFEEF2FF), // Indigo 50
+                  iconColor: const Color(0xFF6366F1), // Indigo
+                  iconBgColor: const Color(0xFFEEF2FF),
                   title: "Thông tin phòng trọ",
                   subtitle: "Hợp đồng & tiện ích",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RoomInfoScreen(),
+                      ),
+                    );
+                  },
                 ),
-                _buildDivider(),
+                // 3. Điều hướng sang Lịch sử thuê trọ
                 _buildMenuItem(
+                  context: context,
                   icon: Icons.history,
-                  iconColor: const Color(0xFF14B8A6), // Teal 500
-                  iconBg: const Color(0xFFF0FDFA), // Teal 50
+                  iconColor: const Color(0xFF14B8A6), // Teal
+                  iconBgColor: const Color(0xFFF0FDFA),
                   title: "Lịch sử thuê trọ",
                   subtitle: "Lịch sử thanh toán & hóa đơn",
-                  onTap: () {},
+                  isLastItem: true,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RentalHistoryScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
             const SizedBox(height: 24),
-            _buildMenuSection(
+            _buildMenuGroup(
               title: "HỆ THỐNG",
-              children: [
+              items: [
                 _buildMenuItem(
+                  context: context,
                   icon: Icons.logout,
-                  iconColor: kDangerColor,
-                  iconBg: const Color(0xFFFEF2F2), // Red 50
+                  iconColor: Colors.red,
+                  iconBgColor: const Color(0xFFFEF2F2),
                   title: "Đăng xuất",
-                  subtitle: null, // Không có subtitle
-                  onTap: () {},
-                  isDestructive: true,
+                  titleColor: Colors.red,
+                  isLastItem: true,
+                  onTap: () {
+                    // Xử lý đăng xuất tại đây
+                  },
                 ),
               ],
             ),
             const SizedBox(height: 32),
             const Text(
               "Phiên bản 1.0.2",
-              style: TextStyle(
-                color: kTextSecondary,
-                fontSize: 12,
-              ),
+              style: TextStyle(color: Colors.grey, fontSize: 12),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 
-  // 1. App Bar
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: kBackgroundColor.withOpacity(0.9),
+      backgroundColor: const Color(0xFFF6F6F8).withOpacity(0.95),
       elevation: 0,
       centerTitle: true,
-      leading: IconButton(
-        icon: Container(
-          width: 40,
-          height: 40,
-          decoration: const BoxDecoration(
-            color: Colors.transparent, 
-            shape: BoxShape.circle,
-          ),
-          child: const Icon(Icons.arrow_back, color: kTextPrimary),
-        ),
-        onPressed: () => Navigator.pop(context), // Logic quay lại
-      ),
+      // Trong ngữ cảnh Tabbar, nút back thường không cần thiết trừ khi muốn quay lại login
+      automaticallyImplyLeading: false, 
       title: const Text(
         "Cá nhân",
         style: TextStyle(
-          color: kTextPrimary,
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Plus Jakarta Sans',
+          color: Colors.black,
         ),
       ),
     );
   }
 
-  // 2. Profile Header (Avatar + Name)
   Widget _buildProfileHeader() {
     return Column(
       children: [
         const SizedBox(height: 16),
-        // Avatar with Dashed Border
         Stack(
           children: [
-            // Custom Paint cho viền đứt đoạn
-            CustomPaint(
-              painter: DashedCirclePainter(color: kPrimaryColor, strokeWidth: 2, gap: 5),
-              child: Container(
-                margin: const EdgeInsets.all(6), // Khoảng cách giữa viền và ảnh
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  shape: BoxShape.circle,
-                ),
-                // TODO: User Avatar Image
-                child: const Icon(Icons.person, size: 60, color: Colors.white),
+            Container(
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: const Color(0xFF2B6CEE).withOpacity(0.5), width: 1),
+              ),
+              child: const CircleAvatar(
+                radius: 56,
+                backgroundImage: NetworkImage("https://lh3.googleusercontent.com/aida-public/AB6AXuAQhf7xqVBTAP8rO1FFv7o_hhzyqu7q2We_7Jvg0eJ14G_zxPaTAjO2SRotD3W4AhygmRhC_7cu7knP-8wJGtU5l03V9_3nnaK59drhkHrAaF37JPPEmA0H1ohz0FDF7aD8eMSJKmRMucbnu6_LN0aC205eOYM0ohpC_3JkKo5miAZOyYuKGHrnavGVD4O-uPniZybghYZu428kZO5XtGViN9MpInwH13F5DYXi5dqGLMfHnu2prscA27WDkgldw9dswEbbBziD6BA"),
+                backgroundColor: Colors.grey,
               ),
             ),
-            // Edit Button Badge
             Positioned(
               bottom: 0,
               right: 0,
               child: Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  color: const Color(0xFF2B6CEE),
                   shape: BoxShape.circle,
-                  border: Border.all(color: kBackgroundColor, width: 3),
+                  border: Border.all(color: Colors.white, width: 2),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -162,37 +158,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )
                   ],
                 ),
-                child: const Icon(Icons.edit, color: Colors.white, size: 14),
+                child: const Icon(Icons.edit, color: Colors.white, size: 16),
               ),
             ),
           ],
         ),
         const SizedBox(height: 16),
-        // Name & Phone Placeholder
         const Text(
-          "Tên người dùng", // Placeholder Name
+          "Nguyễn Văn A",
           style: TextStyle(
-            color: kTextPrimary,
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Plus Jakarta Sans',
+            color: Color(0xFF0D121B),
           ),
         ),
         const SizedBox(height: 4),
         const Text(
-          "Số điện thoại", // Placeholder Phone
+          "0912 *** ***",
           style: TextStyle(
-            color: kTextSecondary,
             fontSize: 14,
             fontWeight: FontWeight.w500,
+            color: Colors.grey,
           ),
         ),
       ],
     );
   }
 
-  // 3. Menu Group Component
-  Widget _buildMenuSection({required String title, required List<Widget> children}) {
+  Widget _buildMenuGroup({required String title, required List<Widget> items}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -201,182 +194,102 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Text(
             title,
             style: const TextStyle(
-              color: kTextSecondary,
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              letterSpacing: 1.0,
+              color: Colors.grey,
+              letterSpacing: 0.5,
             ),
           ),
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: kSurfaceColor,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: kBorderColor),
+            border: Border.all(color: Colors.grey.shade100),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.01),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
+                color: Colors.black.withOpacity(0.02),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              )
             ],
           ),
-          child: Column(children: children),
+          child: Column(
+            children: items,
+          ),
         ),
       ],
     );
   }
 
-  // 4. Single Menu Item Component
   Widget _buildMenuItem({
+    required BuildContext context,
     required IconData icon,
     required Color iconColor,
-    required Color iconBg,
+    required Color iconBgColor,
     required String title,
     String? subtitle,
+    Color titleColor = const Color(0xFF0D121B),
+    bool isLastItem = false,
     required VoidCallback onTap,
-    bool isDestructive = false,
   }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16), // Để hiệu ứng ripple đẹp
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            // Icon Box
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: iconBg,
-                borderRadius: BorderRadius.circular(10),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: isLastItem
+            ? const BorderRadius.vertical(bottom: Radius.circular(16))
+            : const BorderRadius.vertical(top: Radius.circular(16)),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            border: isLastItem
+                ? null
+                : Border(bottom: BorderSide(color: Colors.grey.shade100)),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: iconBgColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(icon, color: iconColor, size: 24),
               ),
-              child: Icon(icon, color: iconColor, size: 22),
-            ),
-            const SizedBox(width: 16),
-            // Text Content
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: isDestructive ? kDangerColor : kTextPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  if (subtitle != null) ...[
-                    const SizedBox(height: 2),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      subtitle,
-                      style: const TextStyle(
-                        color: kTextSecondary,
-                        fontSize: 12,
+                      title,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: titleColor,
                       ),
                     ),
+                    if (subtitle != null) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        subtitle,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-            // Arrow Icon
-            Icon(
-              Icons.chevron_right,
-              color: isDestructive ? kDangerColor.withOpacity(0.5) : Colors.grey.shade400,
-              size: 20,
-            ),
-          ],
+              const Icon(Icons.chevron_right, color: Colors.grey, size: 24),
+            ],
+          ),
         ),
       ),
     );
   }
-
-  Widget _buildDivider() {
-    return const Divider(height: 1, thickness: 1, color: kBorderColor, indent: 70);
-  }
-
-  // 5. Bottom Navigation Bar (Visual only)
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border(top: BorderSide(color: Colors.grey.shade200)),
-      ),
-      child: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 3, // Đặt cứng là 3 (Cá nhân)
-        selectedItemColor: kPrimaryColor,
-        unselectedItemColor: Colors.grey.shade400,
-        selectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
-        unselectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: "Trang chủ",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            activeIcon: Icon(Icons.favorite),
-            label: "Đã lưu",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            activeIcon: Icon(Icons.chat_bubble),
-            label: "Tin nhắn",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person), // Filled icon for active state
-            activeIcon: Icon(Icons.person),
-            label: "Cá nhân",
-          ),
-        ],
-        onTap: (index) {},
-      ),
-    );
-  }
-}
-
-// Class hỗ trợ vẽ viền đứt đoạn tròn quanh Avatar
-class DashedCirclePainter extends CustomPainter {
-  final Color color;
-  final double strokeWidth;
-  final double gap;
-
-  DashedCirclePainter({required this.color, required this.strokeWidth, required this.gap});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = color
-      ..strokeWidth = strokeWidth
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
-
-    final double radius = size.width / 2;
-    final double circumference = 2 * math.pi * radius;
-    final double dashWidth = 5.0; // Độ dài mỗi vạch
-    final int dashCount = (circumference / (dashWidth + gap)).floor();
-    final double initialOffset = -math.pi / 2; // Bắt đầu từ đỉnh
-
-    for (int i = 0; i < dashCount; i++) {
-      final double startAngle = initialOffset + (2 * math.pi * i / dashCount);
-      final double sweepAngle = (2 * math.pi / dashCount) * (dashWidth / (dashWidth + gap));
-      canvas.drawArc(
-        Rect.fromCircle(center: Offset(radius, radius), radius: radius),
-        startAngle,
-        sweepAngle,
-        false,
-        paint,
-      );
-    }
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

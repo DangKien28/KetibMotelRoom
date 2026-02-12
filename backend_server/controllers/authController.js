@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
 const { where } = require('sequelize')
+const { use } = require('react')
 
 exports.register = async (req, res)=> {
     //1. check lỗi validation
@@ -84,6 +85,13 @@ exports.login = async (req, res) => {
             // Nếu không khớp
             return res.status(401).json({ message: "Mật khẩu không chính xác" });
         }
+
+        const payload = {user: {id: user.id}}
+        const token = jwt.sign(
+            payload,
+            process.env.JWT_SECRET,
+            { expiresIn: '30d'}
+        )
 
         // 3. Đăng nhập thành công
         const { password_hash, ...userInfo } = user.dataValues;

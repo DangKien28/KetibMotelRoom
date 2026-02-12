@@ -1,177 +1,114 @@
 import 'package:flutter/material.dart';
+import 'detail_message_screen.dart';
 
-class MessageScreen extends StatefulWidget {
-  const MessageScreen({super.key});
-
-  @override
-  State<MessageScreen> createState() => _MessageScreenState();
-}
-
-class _MessageScreenState extends State<MessageScreen> {
-  // --- COLOR CONSTANTS ---
-  static const Color kPrimaryColor = Color(0xFF2B6CEE);
-  static const Color kBackgroundColor = Color(0xFFF6F6F8);
-  static const Color kSurfaceColor = Colors.white;
-  static const Color kTextPrimary = Color(0xFF0F172A); // Slate 900
-  static const Color kTextSecondary = Color(0xFF64748B); // Slate 500
-  static const Color kBorderColor = Color(0xFFE2E8F0);
-
-  // --- MOCK STRUCTURE (CHỈ CẤU TRÚC, KHÔNG DỮ LIỆU CỤ THỂ) ---
-  // isUnread: true -> Hiện thanh xanh bên trái + chấm xanh
-  // isOnline: true -> Hiện chấm xanh lá ở avatar
-  // isSupport: true -> Hiện icon hỗ trợ thay vì avatar ảnh
-  final List<Map<String, dynamic>> _messageStructure = [
-    {'isUnread': true, 'isOnline': true, 'isSupport': false}, // Mô phỏng tin nhắn mới nhất
-    {'isUnread': false, 'isOnline': false, 'isSupport': false}, // Tin nhắn thường
-    {'isUnread': false, 'isOnline': false, 'isSupport': false}, // Tin nhắn thường
-    {'isUnread': false, 'isOnline': true, 'isSupport': true},   // Tin nhắn từ CSKH
-  ];
+class MessagesScreen extends StatelessWidget {
+  const MessagesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildCustomHeader(),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 10),
-                      // Title
-                      const Text(
-                        "Tin nhắn",
-                        style: TextStyle(
-                          color: kTextPrimary,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800,
-                          fontFamily: 'Plus Jakarta Sans',
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      // Search Bar
-                      _buildSearchBar(),
-                      const SizedBox(height: 16),
-                      // Message List
-                      ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: _messageStructure.length,
-                        separatorBuilder: (context, index) => const SizedBox(height: 12),
-                        itemBuilder: (context, index) {
-                          return _buildMessageItem(_messageStructure[index]);
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: _buildBottomNavBar(),
-    );
-  }
-
-  // 1. Header (Avatar + Greeting)
-  Widget _buildCustomHeader() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: const Color(0xFFF6F6F8), // background-light
+      appBar: _buildAppBar(),
+      body: Column(
         children: [
-          Row(
-            children: [
-              // Avatar Placeholder
-              Stack(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.person, color: Colors.white), 
-                    // TODO: Load User Avatar Image here
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: kSurfaceColor, width: 1.5),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Xin chào,",
-                    style: TextStyle(color: kTextSecondary, fontSize: 12),
-                  ),
-                  Text(
-                    "Tên người dùng", // Placeholder Name
-                    style: TextStyle(
-                      color: kTextPrimary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Plus Jakarta Sans',
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          // Notification Bell
-          Stack(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.notifications_none, size: 28, color: kTextPrimary),
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Container(
-                  width: 10,
-                  height: 10,
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
+          // Phần tiêu đề và tìm kiếm
+          Container(
+            color: const Color(0xFFF6F6F8),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Tin nhắn",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w800,
+                    color: Color(0xFF0D121B),
                   ),
                 ),
-              )
-            ],
-          )
+                const SizedBox(height: 16),
+                _buildSearchBar(),
+              ],
+            ),
+          ),
+          // Danh sách tin nhắn
+          Expanded(
+            child: _buildMessageList(),
+          ),
         ],
       ),
     );
   }
 
-  // 2. Search Bar
+  PreferredSizeWidget _buildAppBar() {
+    return AppBar(
+      backgroundColor: const Color(0xFFF6F6F8).withOpacity(0.95),
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      title: Row(
+        children: [
+          Stack(
+            children: [
+              const CircleAvatar(
+                radius: 20,
+                backgroundImage: NetworkImage("https://lh3.googleusercontent.com/aida-public/AB6AXuAajLU1vro0qfn8-rCJkGEt5Uy9N2VIhd9n1aadZjHqW0ft_Y7p0en-vpT0rwEucbV_7TrhruaYs4pKHbKJ1Yo_6167IiNp48Hvk-sfHH_FENlypeEym1MySox9i-QmWMdqR0zsaVCXeGbqnzC4t5zwdZFwMtSsYl2zDHPRyisY1ZnFYYlangw3dbUWbjzWicPt_czNONwGTEBMOFu950uZVoed5GdZk_a8qhF-vJRwPmhHC8FYmXSJJ8EGxNWdp6AKxgGDbfWHNFU"),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                ),
+              )
+            ],
+          ),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text("Xin chào,", style: TextStyle(fontSize: 12, color: Colors.grey)),
+              Text("Minh Tú", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
+            ],
+          ),
+        ],
+      ),
+      actions: [
+        Stack(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.notifications_outlined, color: Colors.black),
+              onPressed: () {},
+            ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            )
+          ],
+        ),
+      ],
+    );
+  }
+
   Widget _buildSearchBar() {
     return Container(
       decoration: BoxDecoration(
-        color: kSurfaceColor,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: kBorderColor),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade200),
       ),
       child: const TextField(
         decoration: InputDecoration(
@@ -179,191 +116,212 @@ class _MessageScreenState extends State<MessageScreen> {
           hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
           prefixIcon: Icon(Icons.search, color: Colors.grey),
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          contentPadding: EdgeInsets.symmetric(vertical: 14),
         ),
       ),
     );
   }
 
-  // 3. Message Item Frame
-  Widget _buildMessageItem(Map<String, dynamic> config) {
-    bool isUnread = config['isUnread'];
-    bool isOnline = config['isOnline'];
-    bool isSupport = config['isSupport'];
+  Widget _buildMessageList() {
+    // Dữ liệu giả lập
+    final List<Map<String, dynamic>> messages = [
+      {
+        "name": "Cô Hạnh - Chủ nhà",
+        "message": "Cháu ơi, cuối tuần này cô qua thu tiền nhà nhé!",
+        "time": "10:30",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuCjC1iUUJBNo1oqh3M5_OFsZ9qhDFShhyotrz8hUf4yEosszw7_MNimHCD56OMb2wRX5tEcS-_sptHheo9whx0zNbljRGyewvex3Ksc3pZIdefs2oHqid5c--Lkub8uUqWOYkFDwXpeBNCJKWYET4GJu4YU9tErUjulpAMGidEp5vjFYjwi1Rjd_1bEtk2zm8gCRvqMynoKPPTB6-SOxEFShp-zde9TWC0kUa5aAufoFhPWhaubRHBq5_L_S9tiX9nz5ta64nqbN1A",
+        "isOnline": true,
+        "isUnread": true,
+        "isSystem": false,
+      },
+      {
+        "name": "A. Tuấn Anh",
+        "message": "Ok em, anh đã nhận được cọc rồi nhé, có gì...",
+        "time": "Hôm qua",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuCKhDl_uBuKhrhcrAClhkOZxkYC-to0LRoKWxDyMUzmjbco5Tw-9gSKtFSnDv83gNa11bsPIHqTENjyZQQ6ovnEMUjuFq_8Ph7YkqsiGxm3nfq4_mFjOBtKOrcQQfQb7ImGRd3ACNS-NgiypXiLu39rjJ5CQvPocTxH_S8UnjagmxY3z-KTys8EPXhE4XSGsoRl3lhw_VLh1NIfpl9CaDd04paXBP8h9yU1LFLFuSN4mK8fcWGYC5yfTF0aPXp3sSHDr8rXBC7tBCI",
+        "isOnline": false,
+        "isUnread": false,
+        "isSystem": false,
+      },
+      {
+        "name": "Chị Lan (Môi giới)",
+        "message": "Em xem phòng lúc mấy giờ được để chị báo...",
+        "time": "Thứ 2",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuAMC3BPbDlae4YFomGKr_KbJ6OqFgx1tCLQbIsZVVkQlJhT1K9dckaCC4mmmup7aDFKNK2sfEvCo8kkzeY1QbOakTbo9TiAQoQWTeXrUQgk-uKxF268vZ_T3MWpHVzIAJxw6S15KTJyFRmUHI0ycjS9ANCrB2jULE4TT7mi5ApNjCjt-wPwiYPf89ms89QaUmjHH2Ww1Y9Bs8LXWdkFRu9EIKXrYAxbyGf8o_06yMn6HFNGgFCJjqR_gM-lsV6u4H1A7bo8FiR2GWg",
+        "isOnline": false,
+        "isUnread": false,
+        "isSystem": false,
+      },
+      {
+        "name": "Hỗ trợ khách hàng",
+        "message": "Chào mừng bạn đến với ứng dụng Thuê phòng...",
+        "time": "01/06",
+        "avatar": "", // System icon
+        "isOnline": false,
+        "isUnread": false,
+        "isSystem": true,
+      },
+    ];
 
-    return Container(
-      height: 80, // Chiều cao cố định tương đối cho khung
-      decoration: BoxDecoration(
-        color: kSurfaceColor,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.02),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      itemCount: messages.length,
+      separatorBuilder: (_, __) => const SizedBox(height: 12),
+      itemBuilder: (context, index) {
+        final msg = messages[index];
+        // Truyền context vào hàm build item
+        return _buildMessageItem(context, msg);
+      },
+    );
+  }
+
+  Widget _buildMessageItem(BuildContext context, Map<String, dynamic> msg) {
+    bool isUnread = msg['isUnread'];
+    bool isSystem = msg['isSystem'];
+
+    // Bọc trong GestureDetector để xử lý sự kiện bấm
+    return GestureDetector(
+      onTap: () {
+        // Điều hướng sang màn hình chi tiết
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailMessageScreen(
+              userName: msg['name'],
+              // Xử lý avatar cho trường hợp system hoặc user thường
+              avatarUrl: isSystem 
+                  ? "https://via.placeholder.com/150" // Hoặc icon url mặc định
+                  : msg['avatar'],
+            ),
           ),
-        ],
-        border: Border.all(color: kBorderColor.withOpacity(0.5)),
-      ),
-      // ClipRRect để cắt cái thanh màu xanh bên trái nếu có
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Stack(
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.grey.shade100),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            )
+          ],
+        ),
+        child: Row(
           children: [
-            // Hiệu ứng thanh xanh bên trái nếu chưa đọc (giống ảnh 1)
+            // Left Border Indicator (Nếu chưa đọc)
             if (isUnread)
-              Positioned(
-                left: 0,
-                top: 0,
-                bottom: 0,
-                width: 4,
-                child: Container(color: kPrimaryColor),
+              Container(
+                width: 3,
+                height: 40,
+                margin: const EdgeInsets.only(right: 12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF2B6CEE),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
-            
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Row(
-                children: [
-                  if (isUnread) const SizedBox(width: 4), // Padding nhẹ để tránh thanh xanh
-                  
-                  // Avatar Area
-                  Stack(
-                    children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: isSupport ? Colors.blue.shade50 : Colors.grey.shade300,
-                          shape: BoxShape.circle,
-                        ),
-                        child: isSupport 
-                          ? const Icon(Icons.support_agent, color: kPrimaryColor, size: 28)
-                          : const Icon(Icons.person, color: Colors.white, size: 28),
-                          // TODO: Load User Image Here
+
+            // Avatar
+            Stack(
+              children: [
+                if (isSystem)
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF2B6CEE).withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.support_agent, color: Color(0xFF2B6CEE), size: 28),
+                  )
+                else
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundImage: NetworkImage(msg['avatar']),
+                  ),
+
+                // Online Dot
+                if (msg['isOnline'] == true)
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 2),
                       ),
-                      if (isOnline && !isSupport)
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            width: 12,
-                            height: 12,
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: kSurfaceColor, width: 2),
-                            ),
+                    ),
+                  )
+              ],
+            ),
+            const SizedBox(width: 12),
+
+            // Content
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          msg['name'],
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF0D121B),
                           ),
-                        )
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Text(
+                        msg['time'],
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: isUnread ? FontWeight.bold : FontWeight.normal,
+                          color: isUnread ? const Color(0xFF2B6CEE) : Colors.grey,
+                        ),
+                      ),
                     ],
                   ),
-                  const SizedBox(width: 14),
-                  
-                  // Content Area
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "Tên người gửi", // Placeholder
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: kTextPrimary,
-                              ),
-                            ),
-                            Text(
-                              isUnread ? "10:30" : "Hôm qua", // Placeholder Time
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: isUnread ? FontWeight.bold : FontWeight.normal,
-                                color: isUnread ? kPrimaryColor : kTextSecondary,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 4),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                "Nội dung tin nhắn mô phỏng hiển thị ở đây...", // Placeholder Body
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: isUnread ? kTextPrimary : kTextSecondary,
-                                  fontWeight: isUnread ? FontWeight.w600 : FontWeight.normal,
-                                ),
-                              ),
-                            ),
-                            if (isUnread)
-                              Container(
-                                margin: const EdgeInsets.only(left: 8),
-                                width: 8,
-                                height: 8,
-                                decoration: const BoxDecoration(
-                                  color: kPrimaryColor,
-                                  shape: BoxShape.circle,
-                                ),
-                              )
-                          ],
-                        ),
-                      ],
+                  const SizedBox(height: 4),
+                  Text(
+                    msg['message'],
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: isUnread ? FontWeight.w600 : FontWeight.normal,
+                      color: isUnread ? const Color(0xFF0D121B) : Colors.grey,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
             ),
+
+            // Unread Dot
+            if (isUnread)
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF2B6CEE),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
           ],
         ),
-      ),
-    );
-  }
-
-  // 4. Bottom Nav (Visual only - Matching design)
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border(top: BorderSide(color: Colors.grey.shade200)),
-      ),
-      child: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 2, // Đặt cứng là 2 (Tin nhắn) để giống ảnh
-        selectedItemColor: kPrimaryColor,
-        unselectedItemColor: Colors.grey.shade400,
-        selectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
-        unselectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: "Trang chủ",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            activeIcon: Icon(Icons.favorite),
-            label: "Đã lưu",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            activeIcon: Icon(Icons.chat_bubble),
-            label: "Tin nhắn",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: "Cá nhân",
-          ),
-        ],
-        onTap: (index) {},
       ),
     );
   }

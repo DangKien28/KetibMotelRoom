@@ -8,169 +8,187 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  // --- COLOR CONSTANTS ---
-  static const Color kPrimaryColor = Color(0xFF2B6CEE);
-  static const Color kBackgroundColor = Color(0xFFF6F6F8);
-  static const Color kSurfaceColor = Colors.white;
-  static const Color kTextPrimary = Color(0xFF0F172A);
-  static const Color kTextSecondary = Color(0xFF64748B);
-  static const Color kBorderColor = Color(0xFFCFD7E7);
+  // Controllers để quản lý dữ liệu nhập vào
+  late TextEditingController _nameController;
+  late TextEditingController _phoneController;
+  late TextEditingController _emailController;
+  late TextEditingController _addressController;
+  late TextEditingController _passwordController;
 
-  // State quản lý ẩn/hiện mật khẩu
-  bool _obscurePassword = true;
+  bool _obscurePassword = true; // Trạng thái ẩn/hiện mật khẩu
+
+  @override
+  void initState() {
+    super.initState();
+    // Khởi tạo giá trị mặc định (giả lập dữ liệu hiện tại của user)
+    _nameController = TextEditingController(text: "Nguyễn Văn A");
+    _phoneController = TextEditingController(text: "0912 345 678");
+    _emailController = TextEditingController(text: "nguyenvan.a@example.com");
+    _addressController = TextEditingController(text: "123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh");
+    _passwordController = TextEditingController(text: "password123");
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _phoneController.dispose();
+    _emailController.dispose();
+    _addressController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: const Color(0xFFF6F6F8), // background-light
       appBar: _buildAppBar(),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-        child: Column(
-          children: [
-            _buildAvatarSection(),
-            const SizedBox(height: 30),
-            _buildForm(),
-            // Khoảng trống dưới cùng để tránh bị nút che
-            const SizedBox(height: 100),
-          ],
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: Column(
+                children: [
+                  _buildAvatarSection(),
+                  const SizedBox(height: 32),
+                  _buildForm(),
+                ],
+              ),
+            ),
+          ),
+          _buildBottomAction(),
+        ],
       ),
-      bottomNavigationBar: _buildBottomButton(),
     );
   }
 
-  // 1. App Bar
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: const Color(0xFFF6F6F8),
       elevation: 0,
       centerTitle: true,
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_new, size: 20, color: kTextPrimary),
+        icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
         onPressed: () => Navigator.pop(context),
       ),
       title: const Text(
         "Chỉnh sửa thông tin",
         style: TextStyle(
-          color: kTextPrimary,
+          color: Color(0xFF0D121B),
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Plus Jakarta Sans',
         ),
       ),
     );
   }
 
-  // 2. Avatar Change Section
   Widget _buildAvatarSection() {
     return Column(
       children: [
         Stack(
           children: [
-            // Avatar Placeholder
             Container(
-              width: 100,
-              height: 100,
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
                 shape: BoxShape.circle,
-                border: Border.all(color: kSurfaceColor, width: 4),
+                border: Border.all(color: Colors.white, width: 4),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
+                    blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              child: const Icon(Icons.person, size: 60, color: Colors.white),
-              // TODO: Thay bằng Image.network khi có dữ liệu
+              child: const CircleAvatar(
+                radius: 56, // Size lớn như thiết kế
+                backgroundImage: NetworkImage("https://lh3.googleusercontent.com/aida-public/AB6AXuActuspTvAuUiZQf0Ta0Aen6klFM1SrSDzGRhSjcDDewLGch6j3rqdD6_UtpmTQNeNE2bRv3wdNbDgPjRNyn2rMkq4oVxa6-xml6wloFJsrFJedO1YWVa3_semyFRCbFaQxKPfoYkS78S17kgEHE2vBLe7ZYYvRzEDiub4eD-bcdWVw-shgrPRjh9tkyIsp9_RJRKUqs9Hh9J7DSwjJXD4avIupIIqdGngwULI6h5juBro8ViCepQTiKaUB5EDl69D5MInwIb3L46M"),
+              ),
             ),
-            
-            // Camera Icon Badge
             Positioned(
               bottom: 0,
               right: 0,
               child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  color: const Color(0xFF2B6CEE),
                   shape: BoxShape.circle,
-                  border: Border.all(color: kSurfaceColor, width: 3),
+                  border: Border.all(color: const Color(0xFFF6F6F8), width: 3),
                 ),
-                child: const Icon(Icons.camera_alt, color: Colors.white, size: 16),
+                child: const Icon(Icons.camera_alt, color: Colors.white, size: 18),
               ),
             ),
           ],
         ),
         const SizedBox(height: 12),
-        InkWell(
-          onTap: () {
-            // Logic đổi ảnh
-          },
+        TextButton(
+          onPressed: () {},
           child: const Text(
             "Đổi ảnh đại diện",
             style: TextStyle(
-              color: kPrimaryColor,
-              fontWeight: FontWeight.w600,
+              color: Color(0xFF2B6CEE),
+              fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
           ),
-        ),
+        )
       ],
     );
   }
 
-  // 3. Form Fields
   Widget _buildForm() {
     return Column(
       children: [
         _buildTextField(
           label: "Họ và tên",
-          hintText: "Nhập họ và tên của bạn",
+          controller: _nameController,
+          hint: "Nhập họ và tên của bạn",
         ),
         const SizedBox(height: 20),
         _buildTextField(
           label: "Số điện thoại",
-          hintText: "Nhập số điện thoại",
-          prefixIcon: Icons.call,
-          inputType: TextInputType.phone,
+          controller: _phoneController,
+          icon: Icons.call,
+          hint: "Nhập số điện thoại",
+          keyboardType: TextInputType.phone,
         ),
         const SizedBox(height: 20),
         _buildTextField(
           label: "Email",
-          hintText: "Nhập địa chỉ email",
-          prefixIcon: Icons.email,
-          inputType: TextInputType.emailAddress,
+          controller: _emailController,
+          icon: Icons.mail,
+          hint: "Nhập địa chỉ email",
+          keyboardType: TextInputType.emailAddress,
         ),
         const SizedBox(height: 20),
         _buildTextField(
           label: "Địa chỉ",
-          hintText: "Nhập địa chỉ của bạn",
-          prefixIcon: Icons.location_on,
-          maxLines: 3, // Cho phép nhập nhiều dòng
+          controller: _addressController,
+          icon: Icons.location_on,
+          hint: "Nhập địa chỉ của bạn",
+          maxLines: 2, // Cho phép nhập nhiều dòng
         ),
         const SizedBox(height: 20),
         _buildTextField(
           label: "Mật khẩu",
-          hintText: "********",
-          prefixIcon: Icons.lock,
+          controller: _passwordController,
+          icon: Icons.lock,
+          hint: "********",
           isPassword: true,
         ),
+        const SizedBox(height: 40), // Khoảng trống cuối form
       ],
     );
   }
 
-  // Helper Widget: Input Field Generic
   Widget _buildTextField({
     required String label,
-    required String hintText,
-    IconData? prefixIcon,
+    required TextEditingController controller,
+    String? hint,
+    IconData? icon,
     bool isPassword = false,
     int maxLines = 1,
-    TextInputType inputType = TextInputType.text,
+    TextInputType keyboardType = TextInputType.text,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,44 +196,38 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         Text(
           label,
           style: const TextStyle(
-            color: kTextPrimary,
+            color: Color(0xFF0D121B),
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            fontFamily: 'Plus Jakarta Sans',
           ),
         ),
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
-            color: kSurfaceColor,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.02),
-                blurRadius: 4,
-                offset: const Offset(0, 1),
-              ),
-            ],
+            border: Border.all(color: const Color(0xFFCFD7E7)), // Border xám nhạt
           ),
           child: TextField(
-            keyboardType: inputType,
-            obscureText: isPassword ? _obscurePassword : false,
+            controller: controller,
+            obscureText: isPassword && _obscurePassword,
+            keyboardType: keyboardType,
             maxLines: maxLines,
-            style: const TextStyle(
-              color: kTextPrimary,
-              fontSize: 16,
-            ),
+            style: const TextStyle(fontSize: 16, color: Color(0xFF0D121B)),
             decoration: InputDecoration(
-              hintText: hintText,
-              hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
-              prefixIcon: prefixIcon != null 
-                  ? Icon(prefixIcon, color: Colors.grey.shade500, size: 22) 
+              hintText: hint,
+              hintStyle: const TextStyle(color: Color(0xFF9CA3AF)),
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              prefixIcon: icon != null
+                  ? Icon(icon, color: Colors.grey, size: 20)
                   : null,
               suffixIcon: isPassword
                   ? IconButton(
                       icon: Icon(
                         _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                        color: Colors.grey.shade400,
+                        color: Colors.grey,
+                        size: 20,
                       ),
                       onPressed: () {
                         setState(() {
@@ -224,21 +236,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       },
                     )
                   : null,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: kBorderColor),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: kBorderColor),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: kPrimaryColor, width: 1.5),
-              ),
-              filled: true,
-              fillColor: kSurfaceColor,
             ),
           ),
         ),
@@ -246,38 +243,38 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
-  // 4. Bottom Button
-  Widget _buildBottomButton() {
+  Widget _buildBottomAction() {
     return Container(
-      padding: const EdgeInsets.all(16).copyWith(
-        bottom: MediaQuery.of(context).padding.bottom + 16
-      ),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: kBackgroundColor,
+        color: const Color(0xFFF6F6F8),
         border: Border(top: BorderSide(color: Colors.grey.shade200)),
       ),
-      child: SizedBox(
-        width: double.infinity,
-        height: 50,
-        child: ElevatedButton(
-          onPressed: () {
-            // Logic lưu thay đổi
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kPrimaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+      child: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF2B6CEE),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              elevation: 4,
+              shadowColor: const Color(0xFF2B6CEE).withOpacity(0.4),
             ),
-            elevation: 0,
-            shadowColor: kPrimaryColor.withOpacity(0.4),
-          ),
-          child: const Text(
-            "Lưu thay đổi",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Plus Jakarta Sans',
+            onPressed: () {
+              // Xử lý lưu thông tin
+              Navigator.pop(context); // Demo: Quay lại màn hình trước
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Đã lưu thay đổi")),
+              );
+            },
+            child: const Text(
+              "Lưu thay đổi",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
