@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:landlord/features/home/presentation/screens/home_screen.dart';
+import 'package:landlord/features/individual/presentation/screens/individual_screen.dart';
+import 'package:landlord/features/message/presentation/screens/message_screen.dart';
 // Lưu ý: Các import dưới đây giả định bạn sẽ tạo các tệp này tương tự bên renter
-// import '../../../manage/presentation/screens/manage_rooms_screen.dart';
-// import '../../../message/presentation/screens/message_screen.dart';
+import '../../../room_management/presentation/screens/room_management_screen.dart';
 // import '../../../individual/presentation/screens/individual_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,21 +13,27 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  int _selectedIndex = 0;
 
   // Danh sách các màn hình chính cho chủ trọ
-  final List<Widget> _pages = [
-    const LandlordHomeScreen(),       // Tab 0: Tổng quan
-    const Center(child: Text("Quản lý phòng")), // Tab 1: Danh sách phòng
-    const Center(child: Text("Tin nhắn")),    // Tab 2: Chat với khách
-    const Center(child: Text("Cá nhân")),     // Tab 3: Hồ sơ chủ trọ
+  final List<Widget> _pages = [    // Tab 0: Tổng quan
+    const ManageRoomsScreen(),         // Tab 1: Danh sách phòng
+    const MessageScreen(),    // Tab 2: Chat với khách
+    const IndividualScreen(),     // Tab 3: Hồ sơ chủ trọ
   ];
+
+  void _onItemTapped(int index)
+  {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: _currentIndex,
+        index: _selectedIndex,
         children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -35,15 +41,14 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.white,
         selectedItemColor: const Color(0xFF2B6CEE), // primary color
         unselectedItemColor: Colors.grey,
-        currentIndex: _currentIndex,
+        currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            _selectedIndex = index;
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard_rounded), label: "Tổng quan"),
-          BottomNavigationBarItem(icon: Icon(Icons.meeting_room_rounded), label: "Phòng trọ"),
+          BottomNavigationBarItem(icon: Icon(Icons.meeting_room_rounded), label: "Quản lý"),
           BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), label: "Tin nhắn"),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "Cá nhân"),
         ],

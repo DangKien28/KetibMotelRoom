@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landlord/features/auth/presentation/screens/welcome_screen.dart';
 import 'package:landlord/features/main/presentation/screens/main_screen.dart';
 
 void main() {
