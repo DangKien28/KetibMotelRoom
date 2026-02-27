@@ -50,7 +50,7 @@ class RoomDetailScreen extends StatelessWidget {
             icon: Icon(Icons.edit, color: primaryColor),
             tooltip: 'Sửa thông tin',
             onPressed: () {
-              // 4. Truyền dữ liệu THỰC TẾ sang màn hình Sửa phòng
+              // 4. Truyền dữ liệu THỰC TẾ sang màn hình Sửa phòng bằng Navigator.push
               Navigator.push(
                 context,
                 MaterialPageRoute(

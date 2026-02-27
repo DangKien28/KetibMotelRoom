@@ -1,5 +1,7 @@
 // frontend_landlord/landlord/lib/features/message/presentation/screens/message_screen.dart
 import 'package:flutter/material.dart';
+// 1. Import màn hình Chi tiết tin nhắn
+import 'detail_message_screen.dart'; 
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -120,8 +122,16 @@ class _MessageScreenState extends State<MessageScreen> {
 
     return InkWell(
       onTap: () {
-        // TODO: Chuyển sang màn hình Chi tiết tin nhắn (Chat chi tiết)
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Mở tin nhắn với $name')));
+        // 2. Điều hướng sang màn hình Chi tiết tin nhắn, truyền tên người gửi qua
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailMessageScreen(
+              renterName: name,
+              avatarUrl: avatarUrl,
+            ),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
