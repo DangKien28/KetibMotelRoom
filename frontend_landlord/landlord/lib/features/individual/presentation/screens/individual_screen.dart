@@ -136,7 +136,7 @@ class IndividualScreen extends StatelessWidget {
                       Container(width: 1, height: 40, color: Colors.white24),
                       Expanded(child: _buildRevenueStat('4', 'Còn trống')),
                       Container(width: 1, height: 40, color: Colors.white24),
-                      Expanded(child: _buildRevenueStat('4.8 ⭐', 'Đánh giá')), // Có thể thay thế hình sao bằng Icon tuỳ ý
+                      Expanded(child: _buildRevenueStat('4.8 ⭐', 'Đánh giá')),
                     ],
                   ),
                 ],
@@ -170,9 +170,6 @@ class IndividualScreen extends StatelessWidget {
                     child: Text('QUẢN LÝ & CÀI ĐẶT', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey, letterSpacing: 1.2)),
                   ),
                   _buildMenuCard([
-                    // ---- DÒNG MỚI ĐƯỢC THÊM THEO YÊU CẦU ----
-                    _buildMenuItem(icon: Icons.article, title: 'Quản lý bài đăng', iconColor: Colors.indigo),
-                    // ------------------------------------------
                     _buildMenuItem(icon: Icons.verified_user, title: 'Xác thực tài khoản', iconColor: primaryColor, trailingWidget: _buildStatusBadge('Đã xác thực', Colors.green)),
                     _buildMenuItem(icon: Icons.notifications, title: 'Cài đặt thông báo', iconColor: Colors.grey[600]!, iconBgColor: Colors.grey[200]),
                     _buildMenuItem(icon: Icons.lock, title: 'Đổi mật khẩu', iconColor: Colors.grey[600]!, iconBgColor: Colors.grey[200], showDivider: false),
@@ -180,7 +177,7 @@ class IndividualScreen extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // --- HỖ TRỢ (Nhóm không có tiêu đề trong HTML) ---
+                  // --- HỖ TRỢ ---
                   _buildMenuCard([
                     _buildMenuItem(icon: Icons.help, title: 'Trung tâm trợ giúp', iconColor: Colors.teal),
                     _buildMenuItem(icon: Icons.description, title: 'Điều khoản & Chính sách', iconColor: Colors.grey[600]!, iconBgColor: Colors.grey[200], showDivider: false),
